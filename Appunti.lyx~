@@ -1,0 +1,4146 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+SML
+\end_layout
+
+\begin_layout Author
+Gurpreet S.
+ Surinder
+\end_layout
+
+\begin_layout Date
+20/06/2018
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{M_{O_{L_{O}}}}$
+\end_inset
+
+ denota una macchina ospite che capisce il linguaggio 
+\begin_inset Formula $\mathcal{L_{O}}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Le CPU microprogrammate sono CPU di cui è possibile aggiornare il firmware.
+ E' presente un microinterprete di microistruzioni che esegue il ciclo fetch/dec
+ode/load/execute/save.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Quando due diversi nomi denotano lo stesso oggetto si sta verificando un
+ effetto chiamato 
+\series bold
+aliasing
+\series default
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Una 
+\series bold
+dichiarazione 
+\series default
+è un meccanismo con il quale si crea un'associazione nell'ambiente.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Il 
+\series bold
+binding 
+\series default
+è il nome dato alla creazione di un'associazione tra nome ed un oggetto
+ denotabile.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Un 
+\series bold
+identificatore 
+\series default
+è una sequenza di caratteri usata per denotare qualcosa.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Il primo 
+\series bold
+costrutto if 
+\series default
+è stato introdotto nel linguaggio 
+\series bold
+Algol 60
+\series default
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\series bold
+ Programmazione in the large
+\series default
+: sviluppo di software di grandi dimensioni.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\series bold
+ Comando sequenziale
+\series default
+: è un comando che indica che due operazioni devono essere eseguite in sequenza
+ 
+\begin_inset Quotes eld
+\end_inset
+
+;
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Go-to:
+\series default
+ il codice tende a diventare complesso da seguire, difficile da implementare
+ in tutte le sue casistiche (ad esempio quando si salta in un blocco diverso).
+\end_layout
+
+\begin_layout Subsection*
+Macchina astratta
+\end_layout
+
+\begin_layout Standard
+Si denota con il simbolo 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Una macchina astratta è un insieme di algoritmi e strutture dati che permettono
+ di eseguire e memorizzare programmi.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Come per le macchine fisiche (CPU) ad ogni macchina astratta è associato
+ un suo linguaggio 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\mathcal{M_{L}}$
+\end_inset
+
+ identifica una macchina astratta che capisce ed esegue il linguaggio 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ è il linguaggio macchina di 
+\begin_inset Formula $\mathcal{M_{L}}$
+\end_inset
+
+, un programma non è altro che una sequenza di istruzioni in 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Macchina astratta ad implementazione compilativa
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vantaggi
+\series default
+: implementazione efficiente;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Svantaggi
+\series default
+: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ non (molto) portabile; 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ perdita di informazione sulla struttura del programma sorgente.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Macchina astratta ad implementazione interpretativa
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vantaggi:
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item flessibile e portabile; 
+\backslash
+item debugging semplificato.
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Svantaggi
+\series default
+: poco efficiente.
+\end_layout
+
+\begin_layout Subsection*
+Interprete e compilatore
+\end_layout
+
+\begin_layout Subsubsection*
+Interprete
+\end_layout
+
+\begin_layout Standard
+Si denota con il simbolo 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ capisce il programma 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ senza aver bisogno di trasformarlo ed implementa il ciclo fetch/decode/load/exe
+cute/save.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\forall i\epsilon\mathcal{D},\mathcal{I_{L}^{L_{O}}}(\mathcal{P^{L}},i)=\mathcal{P^{L}}(i)$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Per qualsiasi input 
+\begin_inset Formula $i$
+\end_inset
+
+, l'interprete applicato a 
+\begin_inset Formula $\mathcal{P^{L}}$
+\end_inset
+
+ ed 
+\begin_inset Formula $i$
+\end_inset
+
+ ritorna lo stesso risultato ritornato da 
+\begin_inset Formula $\mathcal{P^{L}}$
+\end_inset
+
+ applicato ad 
+\begin_inset Formula $i$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{I_{L}^{L_{O}}}$
+\end_inset
+
+identifica un interprete 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+ del linguaggio 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ scritto nel linguaggio 
+\begin_inset Formula $\mathcal{L_{O}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Compilatore
+\end_layout
+
+\begin_layout Standard
+Si denota con il simbolo 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Traduce il programma 
+\begin_inset Formula $\mathcal{L}_{1}$
+\end_inset
+
+ in un altro linguaggio 
+\begin_inset Formula $\mathcal{L}_{2}$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{C_{LL_{O}}^{L_{A}}}$
+\end_inset
+
+identifica un compilatore 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ da linguaggio 
+\begin_inset Formula $\mathcal{L_{O}}$
+\end_inset
+
+ in linguaggio 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ scritto in linguaggio 
+\begin_inset Formula $\mathcal{L_{A}}$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Un compilatore può anche trasformare una ricorsione in coda in modo da
+ farla diventare una iterazione.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+ 
+\backslash
+begin{small}
+\end_layout
+
+\end_inset
+
+
+\series bold
+ Ricorsione:
+\series default
+ è il processo che si verifica quando una routine richiama se stessa, di
+ norma su porzioni di dati di volta in volta sempre più piccole, se è una
+ ricorsione incontrollata può incorrere in un 
+\series bold
+stack overflow
+\series default
+.
+ Esiste una variante chiamata 
+\series bold
+ricorsione in coda
+\series default
+, la quale consiste nel chiamare la funzione che ritorna il valore senza
+ fare ulteriori computazioni.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\series bold
+ Iterazione:
+\series default
+ si realizza quando si eseguono più righe di codice al verificarsi di una
+ determinata condizione.
+ Presenta due tipi di iterazione: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Iterazione determinata:
+\series default
+ il numero di volte che il ciclo è eseguito è 
+\series bold
+stabilito a priori
+\series default
+ e non può essere cambiato 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Iterazione indeterminata:
+\series default
+ il ciclo viene ripetuto 
+\series bold
+fino a 
+\series default
+quando una qualche espressione diventa 
+\series bold
+falsa
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate} 
+\backslash
+end{small}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Linguaggio di programmazione
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ identifica un linguaggio macchina.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{P^{L}}$
+\end_inset
+
+ denota un programma scritto in linguaggio 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Tipi (Type)
+\end_layout
+
+\begin_layout Standard
+Un tipo di dato è una 
+\series bold
+collezione di valori omogenei e rappresentabili
+\series default
+, dotata di un insieme di operazioni che manipolano tali valori.
+\end_layout
+
+\begin_layout Itemize
+Un linguaggio di programmazione 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ è 
+\series bold
+insicuro
+\series default
+ 
+\series bold
+ai tipi
+\series default
+ se nel programma 
+\begin_inset Formula $\mathcal{P^{L}}$
+\end_inset
+
+ è possibile violare vincoli di tipo senza che la macchina astratta 
+\begin_inset Formula $\mathcal{M_{L}}$
+\end_inset
+
+ se me accorga.
+ 
+\end_layout
+
+\begin_layout Itemize
+Due tipi sono 
+\series bold
+strutturalmente equivalenti 
+\series default
+quando: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ un tipo equivale a se stesso 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ un 
+\series bold
+alias
+\series default
+ di un tipo è equivalente a quel tipo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Se due tipi sono costruiti applicando lo stesso costruttore di tipo a tipi
+ equivalenti, allora essi sono equivalenti.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Due tipi sono 
+\series bold
+equivalenti per nome
+\series default
+ solo se hanno lo stesso nome (un tipo è equivalente per nome solo a se
+ stesso)
+\end_layout
+
+\begin_layout Itemize
+Le conversioni tra due tipi vengono dette 
+\series bold
+unchecked
+\series default
+ quando non viene data la possibilità al compilatore di verificare se il
+ 
+\series bold
+cast
+\series default
+ è corretto.
+\end_layout
+
+\begin_layout Itemize
+Il tipo di dato che fa parte di tipi di dato in cui è definito un ordine
+ specifico è detto 
+\series bold
+ordinale
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Due tipi sono 
+\series bold
+compatibili
+\series default
+ quando il tipo1 è ammesso in qualsiasi contesto in cui sarebbe richiesto
+ il tipo2.
+\end_layout
+
+\begin_layout Itemize
+Si ha 
+\series bold
+poliformismo universale parametrico
+\series default
+ quando un valore ha un'infinità di tipi diversi che si ottengono da un
+ unico schema di tipo generale.
+\end_layout
+
+\begin_layout Itemize
+Si ha 
+\series bold
+inferenza di tipo
+\series default
+ quando il tipo di dato viene rilevato ed automaticamente riconosciuto dal
+ 
+\series bold
+type checker
+\series default
+ (ML presenta inferenza di tipo).
+\end_layout
+
+\begin_layout Itemize
+Un linguaggio ha 
+\series bold
+tipizzazione 
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+
+\series bold
+ statica:
+\series default
+ se al tempo di compilazione è possibile determinare tutti i vincoli dei
+ tipi; 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+
+\series bold
+ dinamica:
+\series default
+ se i controlli avvengono a tempo di esecuzione 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Record union:
+\series default
+ due campi che condividono la stessa memoria e solo una di queste può essere
+ assegnata alla volta 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+...
+ union{
+\end_layout
+
+\begin_layout Plain Layout
+
+	int ultimoanno;
+\end_layout
+
+\begin_layout Plain Layout
+
+	struct{
+\end_layout
+
+\begin_layout Plain Layout
+
+		int inpari;
+\end_layout
+
+\begin_layout Plain Layout
+
+		int anno;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}stud_in_corso;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{small}
+\end_layout
+
+\end_inset
+
+ultimoanno e stud_in_corso condividono la stessa memoria (di grandezza determina
+ta dal campo più grande)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{small}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Conversione implicita (coercizione):
+\series default
+ la conversione da un tipo all'altro viene fatta dalla macchina astratta
+ senza che questa sia specificata esplicitamente 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+int a=3;
+\end_layout
+
+\begin_layout Plain Layout
+
+char b='3';
+\end_layout
+
+\begin_layout Plain Layout
+
+a=b;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{small}
+\end_layout
+
+\end_inset
+
+ è possibile eguagliare due tipi diversi grazie alla conversione implicita
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{small}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Un sistema di tipi viene detto 
+\series bold
+polimorfo
+\series default
+ quando uno stesso oggetto può avere più di un tipo
+\end_layout
+
+\begin_layout Itemize
+Un valore esibisce 
+\series bold
+polimorfismo di sottotipo 
+\series default
+(o 
+\series bold
+limitato
+\series default
+) quando ha un'infinità di sottotipi diversi, che si ottengono da uno schema
+ di tipo generale, sostituendo ad un opportuno parametro i sottotipi di
+ un tipo assegnato (
+\series bold
+extends 
+\series default
+in Java)
+\end_layout
+
+\begin_layout Itemize
+Un sistema di tipi viene detto 
+\series bold
+monomorfo
+\series default
+ quando ogni oggetto del linguaggio ha un unico tipo
+\end_layout
+
+\begin_layout Itemize
+I tipi di dato di cui i valori non sono costituiti da altri valori sono
+ detti 
+\series bold
+scalari
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Array
+\end_layout
+
+\begin_layout Standard
+Le dimensioni di un array possono essere fissate in momenti diversi: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+forma statica:
+\series default
+ le dimensioni sono note a tempo di compilazione, viene memorizzato interamente
+ nel 
+\series bold
+RDA
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+forma fissata al momento dell'elaborazione:
+\series default
+ le dimensioni vengono risolte al tempo di esecuzione.
+ In questo caso l'array viene memorizzato nello 
+\series bold
+stack
+\series default
+, il 
+\series bold
+RDA
+\series default
+ viene diviso in due parti: una a lunghezza fissa ed una a lunghezza variabile.
+ Nella parte a lunghezza fissa viene memorizzato un puntatore all'array,
+ il quale invece è allocato nella parte a lunghezza variabile.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+forma dinamica:
+\series default
+ non vengono mai fissate, le dimensioni sono variabili a tempo di esecuzione,
+ per questo motivo l'array viene allocato nello 
+\series bold
+heap
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+ Quando un 
+\series bold
+array 
+\series default
+viene allocato viene creato anche il suo 
+\series bold
+dope vector
+\series default
+.
+ Il 
+\series bold
+dope vecor
+\series default
+ contiene: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ un puntatore alla prima locazione nella quale è memorizzato l'array (sempre
+ presente) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Range: 
+\series default
+le dimensioni 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Extent:
+\series default
+ intervalli degli indici 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Stride:
+\series default
+ la distanza in memoria tra due elementi consecutivi 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+ Un array può essere memorizzato in due modi: in 
+\series bold
+ordine di riga
+\series default
+, l'array viene memorizzato in modo contiguo, e in 
+\series bold
+ordine di colonna
+\series default
+, in questo caso l'array è memorizzato nei primi/second/terzi...
+ elementi delle colone.
+ La memorizzazione di un 
+\series bold
+array
+\series default
+ per ordine di 
+\series bold
+riga
+\series default
+ è più diffusa rispetto a quella per ordine di 
+\series bold
+colonna
+\series default
+ perchè essa rende semplice lo 
+\series bold
+slicing
+\series default
+ dell'array.
+\end_layout
+
+\begin_layout Subsection*
+Scope statico e dinamico
+\end_layout
+
+\begin_layout Subsubsection*
+Scope statico
+\end_layout
+
+\begin_layout Standard
+Lo 
+\series bold
+scope statico 
+\series default
+per risolvere una variabile esamina partendo dal blocco interno fino ad
+ arrivare a quello esterno.
+\end_layout
+
+\begin_layout Standard
+Lo 
+\series bold
+scope statico
+\series default
+ è più efficiente, le associazioni sono note a tempo di esecuzione ma è
+ molto più complesso da implementare.
+ 
+\end_layout
+
+\begin_layout Standard
+Lo scope statico presenta la 
+\series bold
+il puntatore a catena statica
+\series default
+, esso punta al blocco immediatamente esterno a quello chiamato, esso facilita
+ la ricerca dei riferimenti a 
+\series bold
+binding
+\series default
+ non locali.
+ 
+\end_layout
+
+\begin_layout Standard
+Lo scope statico presenta il 
+\series bold
+display
+\series default
+ cioè un vettore che memorizza un record di attivazione per ciascun blocco
+ di annidamente; ciò serve a ridurre il costo di scansione della catena
+ statica.
+ Quando ci si riferisce ad un oggetto non locale, il suo puntatore viene
+ reperito dal vettore (così non serve cercare in tutta la 
+\series bold
+catena statica
+\series default
+).
+\end_layout
+
+\begin_layout Subsubsection*
+Scope dinamico
+\end_layout
+
+\begin_layout Standard
+Lo 
+\series bold
+scope dinamico
+\series default
+ per risolvere una variabile cerca il più recente legame ancora attivo stabilito
+ a tempo di esecuzione.
+\end_layout
+
+\begin_layout Standard
+Lo 
+\series bold
+scope dinamico 
+\series default
+è più semplice da implementare ma è meno efficiente e meno leggibile.
+\end_layout
+
+\begin_layout Subsection*
+Ambiente e sottodivisioni
+\end_layout
+
+\begin_layout Standard
+Un 
+\series bold
+ambiente 
+\series default
+è un insieme di associazioni fra nomi ed oggetti denotabili esistenti ad
+ uno specifico punto dell'esecuzione del programma.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Ambiente locale:
+\series default
+ insieme delle associazioni create nel blocco (inclusi i parametri)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Ambiente non locale:
+\series default
+ associazioni ereditate da altri blocchi
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Ambiente globale:
+\series default
+ associazioni comuni a tutti i blocchi
+\end_layout
+
+\begin_layout Standard
+Una funzione produce un 
+\series bold
+effetto collaterale
+\series default
+ quando la funzione 
+\series bold
+produce/modifica 
+\series default
+un valore o uno stato al di fuori del proprio 
+\series bold
+scope locale.
+\end_layout
+
+\begin_layout Subsubsection*
+Blocco
+\end_layout
+
+\begin_layout Standard
+Il 
+\series bold
+blocco
+\series default
+ è una regione testuale di un programma avente un inizio e una fine, esso
+ può contenere dichiarazioni locali alla regione.
+\end_layout
+
+\begin_layout Subsection*
+Chiamata e ritorno da una procedura
+\end_layout
+
+\begin_layout Standard
+Sequenza di operazioni che avvengono per realizzare una chiamata ad una
+ procedura(funzione):
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Modifica del programma counter 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Allocazione dello spazio sulla pila 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Modifica del puntatore del record di attivazione 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Passaggio dei parametri 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Salvataggio dei registri 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Esecuzione del codice per l'inizializzazione (se presente) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sequenza di operazioni che avvengono al ritorno da una chiamata ad una procedura
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Ripristino del program counter 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Restituzione dei valori di ritorno 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Ripristino dei registri 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Esecuzione codice per la fializzazione (se esiste) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Deallocazione dello spazio sulla pila 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Espressione & Comandi
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+Espressione
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Un'espressione è un'entità sintattica la cui valutazione produce un valore
+ (oppure non termina).
+ Essa presenta due elementi 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+l-value: 
+\series default
+espressioni che possono stare a sinistra di un'operazione di assegnamento
+ (in generale indicano una locazione di memoria) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+r-value:
+\series default
+ espressioni che possono stare a destra di un'operazione di assegnamento
+ e che quindi forniscono valori assegnabili a variabili 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\end_inset
+
+ Presenta anche due tipi di 
+\series bold
+valutazione: 
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Lazy: 
+\series default
+tipo di valutazione in cui il calcolo viene ritardato fin quando non viene
+ efettivamente richiesto.
+ Questo tipo di valutazione è più difficile da implementare rispetto al
+ prossimo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Eager:
+\series default
+ l'espressione viene valutata appena viene legata ad una variabile.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\end_inset
+
+ Di una espressione si può creare un 
+\series bold
+albero sintattico
+\series default
+, cioè un albero che rappresenta la struttura sintattica di una stringa
+ in accordo a determinate forme grammaticali.
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+figura mancate
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\series bold
+ Chiusura:
+\series default
+ una coppia di ambiente e espressione in cui questa dev'essere valutata.
+ L'ambiente deve comprendere (almeno) tutte le variabili libere dell'espressione.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Le espressioni solo le principali cause di 
+\series bold
+overflow 
+\series default
+e/o di 
+\series bold
+underflow
+\series default
+, grazie alla somma/sottrazione/prodotto/divisione che come risultato riporta
+ un numero troppo grande o troppo piccolo.
+\end_layout
+
+\begin_layout Subsubsection*
+Passaggio di parametri
+\end_layout
+
+\begin_layout Standard
+Esistono vari tipi di passaggio di parametro ad una funzione: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+
+\series bold
+Passaggio di parametri per nome:
+\series default
+ il parametro viene sintatticamente ricopiato all'interno del corpo della
+ funzione.
+ La valutazione dell'ambiente del parametro dipende da due casi: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Per nome con cattura:
+\series default
+ il valore della variabile passata ad una funzione viene ricercato all'interno
+ della funzione.
+ 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+int x=0;
+\end_layout
+
+\begin_layout Plain Layout
+
+int foo(name int y){
+\end_layout
+
+\begin_layout Plain Layout
+
+	int x=2;
+\end_layout
+
+\begin_layout Plain Layout
+
+	return x+y;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+int a = foo(x+1);
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{small}
+\end_layout
+
+\end_inset
+
+In questo caso y non ha valore 0+1 ma diventa x+1, cioè la riga 4 diventa
+ 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+return x+x+1;
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{small}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Per nome senza cattura:
+\series default
+ il parametro viene valutato nell'ambiente del chiamante, non in quello
+ della funzione chiamata.
+ Insieme al parametro viene passato anche il suo ambiente di valutazione
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Passaggio di parametri per valore-risultato:
+\series default
+ il passaggio avviene per valore, al termine della procedura il valore del
+ parametro attuale viene ricopiato nell'espressione con 
+\series bold
+l-value
+\series default
+ passata
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si possono passare anche le funzioni come parametro, durante questa valutazione
+ i nome non locali possono essere cercati in due modi: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Deep binding:
+\series default
+ nel blocco in cui la funzione passata come parametro è stata dichiarata
+ (Java) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Shallow binding:
+\series default
+ nell'ambiente della funzione passata (linguaggio con scope dinamico)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Passaggio di parametri per valore:
+\series default
+ viene valutato il 
+\series bold
+r-value
+\series default
+ del parametro ed il valoe viene passato alla funzione.
+ Nel caso i parametri siano delle strutture il passaggio per valore crea
+ una copia campo-campo di quella struttura (costo notevole per strutture
+ di grandi dimensioni).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Passaggio di parametri per costante:
+\series default
+ avviene lo stesso tipo del 
+\series bold
+passaggio per valore
+\series default
+ ma il valore non può essere modificato.
+ Nel caso i parametri siano delle strutture il passaggio per costante passa
+ un riferimento alla struttura e non permette che questa possa in qualche
+ modo essere modificata.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Passaggio di parametri per riferimento:
+\series default
+ viene passato alla funzione il 
+\series bold
+l-value
+\series default
+ del parametro.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Notazione
+\end_layout
+
+\begin_layout Standard
+Notazione infissa
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+La notazione infissa consiste nel mettere l'operatore tra i due elementi
+ (
+\begin_inset Formula $a+b$
+\end_inset
+
+).
+ Questo tipo di notazione è difficile da realizzare rispetto alle altre
+ notazione visto che necessita di conoscere l'ordine di precedenza degli
+ operandi.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Notazione prefissa
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+La notazione prefissa consiste nel mettere l'operando prima dei due elementi
+ (
+\begin_inset Formula $+a\quad b$
+\end_inset
+
+).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Notazione postfissa
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+La notazione postfissa consiste nel mettere l'operando dopo i due elementi
+ dell'espressione (
+\begin_inset Formula $a\quad b+$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection*
+
+\series bold
+Comando
+\end_layout
+
+\begin_layout Standard
+Un comando è un'entità sintattica la cui valutazione non restituisce valore
+ ma può comunque avere effetti collaterali.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Si dice che il comando 
+\series bold
+void
+\series default
+ ritorni un unico valore invece che nessun valore, perchè essendo le funzioni
+ dei linguaggi di programmazione derivate da funzioni matematiche.
+ Essa non può non avere valore perchè non esistono funzioni matematiche
+ con codominio vuoto.
+ Quindi tutte le funzioni 
+\series bold
+void
+\series default
+ ritornano un unico valore (non ci è dato sapere quale)
+\end_layout
+
+\begin_layout Subsection*
+Variabili
+\end_layout
+
+\begin_layout Standard
+Il concetto di variabile che comunemente si ha ha due 
+\begin_inset Quotes eld
+\end_inset
+
+proprietà
+\begin_inset Quotes erd
+\end_inset
+
+: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ sono entità 
+\series bold
+denotabili
+\series default
+, ovvero entità a cui possiamo associare un nome 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ possono contenere un valore (locazioni di memoria) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+ Esistono anche altri tipi di variabili che cambiano in base al tipo di
+ linguaggio: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Linguaggi iperativi: 
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{small}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ variabili modificabili 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ aree di memoria associate ad un nome, che possono contenere un valore memorizza
+bile 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+doppio mapping:
+\series default
+ nome 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ variabile e variabile 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ valore memorizzato 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize} 
+\backslash
+end{small} 
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Linguaggi orientati agli oggetti:
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{small} 
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ variabili con 
+\series bold
+modello a riferimento
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ riferimenti (l-value) ad oggetti memorizzati nello heap 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+assegnamento:
+\series default
+ non modifica l'oggetto riferito, ma cambia il riferimento 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\backslash
+end{small}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Linguaggi funzionali:
+\series default
+ non presentano variabili modificabili.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Memoria
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Riferimenti e integrazione: 
+\begin_inset CommandInset href
+LatexCommand href
+name "pdf_2010_Claudio_Fornaro"
+target "/Riferimenti/18-DynAlloc.pdf"
+type "file:"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La memoria può essere allocata nello stack , nello heap o nel Data Segment
+ di un programma, il moTipimento di allocazione può accadere o durante il
+ 
+\series bold
+run-time 
+\series default
+o il 
+\series bold
+compile-time.
+ 
+\end_layout
+
+\begin_layout Standard
+Ci sono 3 tipi di allocazione della memoria: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Statica 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Dinamica mediante stack
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Dinamica mediante heap.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Allocazione di memoria
+\end_layout
+
+\begin_layout Standard
+Il termine allocazione viene utilizzato per indicare l’assegnazione di un
+ blocco di memoria RAM ad un programma.
+\end_layout
+
+\begin_layout Subsubsection*
+Allocazione statica
+\end_layout
+
+\begin_layout Standard
+Si ha allocazione statica quando viene definita una variabile statica (interna
+ o esterna con la clausola 
+\series bold
+static
+\series default
+), essa non è modificabile e non può nemmeno essere rilasiata.
+ Questa variabile viene definita durante il 
+\series bold
+compile-time
+\series default
+ ed allocata nel 
+\series bold
+Data-segment
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Un oggetto che viene 
+\series bold
+allocato staticamente
+\series default
+ mantiene uno stesso indirizzo d memoria per tutta l'esecuzione del programma.
+\end_layout
+
+\begin_layout Subsubsection*
+Allocazione dinamica
+\end_layout
+
+\begin_layout Standard
+Si ha 
+\series bold
+allocazione dinamica
+\series default
+ durante il 
+\series bold
+run-time
+\series default
+, cioè tutte le varibili istanziate durante una funzione o una ricorsione.
+ Viene usato principalmente lo 
+\series bold
+heap
+\series default
+ per questo tipo di allocazione, quinidi è si modificabile e rilasciabile
+ ma solo con chiamate opportune da parte del programmatore.
+\end_layout
+
+\begin_layout Subsection*
+Stack & Heap
+\end_layout
+
+\begin_layout Standard
+Nella scelta della memoria tra 
+\series bold
+stack 
+\series default
+e 
+\series bold
+heap
+\series default
+ dipende sia dal compilatore sia dal programmatore, per esempi i risultati
+ intermedi di un'espressione non vengono sempre memorizzati nello stack
+ ma il copilatore può decidere dove allocare lo spazio.
+\end_layout
+
+\begin_layout Subsubsection*
+Stack
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{quote}
+\end_layout
+
+\end_inset
+
+Function parameters and local variables are generally allocated on a stack.
+ A stack, in computer terms, is basically a linear structure in memory where
+ information (values for variables, for example) are stored sequentially
+ with the most recently added value at the “top” or the end of the memory
+ structure from which values are also read and removed.
+ This allows a function to call itself recursively, and have separate copies
+ of all its parameters and local variables retained separately for each
+ call.
+ The variable values are all “pushed” onto the stack, and then execution
+ begins with a new set of values in the new call.
+ When the function returns, the variable values are restored by “popping”
+ the values from the “top” of the stack in reverse order, thus restoring
+ the previous values of all the variables.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Descrizione presa da: 
+\begin_inset CommandInset href
+LatexCommand href
+name "What is the difference between the stack and the heap?"
+target "https://www.quora.com/What-is-the-difference-between-the-stack-and-the-heap"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{quote}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+RDA (stack frame): 
+\series default
+lo 
+\series bold
+stack frame
+\series default
+ memorizza nello stack tutte le informazioni relative all'istanza di un
+ sottoprogramma.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{quote}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+A stack frame is a memory management technique used in some programming
+ languages for generating and eliminating temporary variables.
+ In other words, it can be considered the collection of all information
+ on the stack pertaining to a subprogram call.
+ Stack frames are only existent during the runtime process.
+ Stack frames help programming languages in supporting recursive functionality
+ for subroutines.
+ A stack frame also known as an activation frame or activation record.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Origine e approfondimenti: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Stack Frame"
+target "https://www.techopedia.com/definition/22304/stack-frame"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{quote}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Durante una funzione nello 
+\series bold
+stack frame
+\series default
+ vengono memorizzati:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item Risultati intermedi
+\backslash
+item Variabili locali
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+Puntatore di catena dinamica:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{small}
+\end_layout
+
+\end_inset
+
+ punta al record di attivazione precedente; dal momento che i record di
+ attivazione hanno tutti una dimensione diversa, bisogna tenere traccia
+ di dove inizia lo 
+\series bold
+stack frame precedente
+\series default
+, in modo da poterlo ripristinare in seguito.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{small}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Puntatore di catena statica (se viene implementato scope statico) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Indirizzo di ritorno 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Indirizzo del risultato 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Parametri 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Nel caso di un metodo anche un riferimento all'oggetto su cui il metodo
+ viene chiamato 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Invece nel caso di 
+\series bold
+stack frame con blocchi anonimi
+\series default
+ vengono memorizzati:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Puntatore di catena dinamica 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Variabili locali 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Risultati intermedi delle espressioni 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Heap
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{quote}
+\end_layout
+
+\end_inset
+
+A heap is generally used for larger data structures or memory that the programme
+r wants to explicitly manage.
+ Whenever “new” or “malloc” is used in C++ or C respectively, the memory
+ for that request is allocated on a heap, and then it’s up to the coder
+ to make sure that is gets freed at the appropriate time with “delete” or
+ “free”.
+ Whereas stack data is usually easy to manage because the compiler allocates
+ and frees the space, heap data is easy to mess up because it often requires
+ manually written code to determine when it gets allocated and freed.
+ But it’s appropriate if you want to manage large long-lived blocks of memory
+ independently of the scope of a function.
+ And although all memory in a computer is linear at some level, a heap is
+ less linear in the way it’s managed because it maintains pointers to different
+ areas of memory making it easier to allocate and free blocks of memory
+ in an arbitrary sequence instead of strictly in reverse order.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Descrizione presa da: 
+\begin_inset CommandInset href
+LatexCommand href
+name "What is the difference between the stack and the heap?"
+target "https://www.quora.com/What-is-the-difference-between-the-stack-and-the-heap"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{quote}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Heap a blocchi variabili: 
+\series default
+lo heap in questo caso è costituito da un unico blocco di memoria che viene
+ suddiviso, creando blocchi di grandezza utile durante il runtime.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+(
+\series bold
+Lista libera
+\series default
+) Quando viene richieste della memoria si restituisce un blocco di dimenzione
+ più appropriata e lo si rimuove dalla lista.
+ Quando invece la memoria viene liberata, essa viene riaggiunta alla lista
+ e fusa con i blocchi liberi adiacenti in modo da formare un unicoblocco
+ di memoria libera.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ (
+\series bold
+Compattazione della memoria libera
+\series default
+) Lo heap ogni volta che viene richiesta memoria viene suddiviso continuando
+ dalla allocazione precedente senza liberare lo spazio prima (anche in caso
+ di deallocazione dell'oggetto), ma quando finisce la memoria di heap libera,
+ questo metodo 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+compatta
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ i blocchi allocati, creando una zona continua di spazio.
+ Alla fine aggiorna il puntatore dello heap allo spazio così liberato.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+(
+\series bold
+Best fit
+\series default
+) La strategia 
+\series bold
+best fit
+\series default
+ consiste nello scorrere tutta la lista alla ricerca del blocco che combacia
+ meglio con la dimensione del blocco richiesto
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+(
+\series bold
+First fit
+\series default
+) La strategia 
+\series bold
+first fit 
+\series default
+consiste nel assegnare una soglia 
+\begin_inset Formula $\mathit{s}$
+\end_inset
+
+ alla dimensione 
+\begin_inset Formula $\mathit{d}$
+\end_inset
+
+ del blocco richiesto, restituendo il primo blocco che ha dimensione compresa
+ tra 
+\begin_inset Formula $\mathit{d}$
+\end_inset
+
+ e 
+\begin_inset Formula $\mathit{d+s}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+ Questo tipo di gestione dello 
+\series bold
+heap
+\series default
+ è soggetto a 
+\series bold
+due
+\series default
+ tipi di 
+\series bold
+frammentazione:
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+
+\series bold
+ interna
+\series default
+, ovvero il blocco di memoria che viene dato alla funzione (e/o variabile....)
+ è leggermente più grande di quello richiesto (la differenza di memoria
+ è sprecata)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+
+\series bold
+esterna
+\series default
+, ovvero non è possibile trovare 
+\begin_inset Formula $\mathit{n}$
+\end_inset
+
+ byte contigui da restituire al programma anche se in totale sono presenti,
+ la memoria disponibile è sparsa per tutto lo heap.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Heap a blocchi di dimensione fissa:
+\series default
+ lo 
+\series bold
+heap
+\series default
+ è costituito da una lista di 
+\begin_inset Formula $\mathrm{n}$
+\end_inset
+
+ blocchi di dimensione fissa.
+ Quando viene richiesta della memoria, il primo elemento libero viene rimosso
+ dalla lista e restituito al richiedente, mentre il puntatore viene spostato
+ sul bloccosucessivo.
+ Alla deallocazione il blocco viene reinserito nella lista.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ (
+\series bold
+Buddy system
+\series default
+) Il 
+\series bold
+buddy system 
+\series default
+suddivide i blocchi in potenze di 2, quando viene richiesto un blocco di
+ dimensione 
+\begin_inset Formula $\mathit{n}$
+\end_inset
+
+ si cerca il più piccolo blocco libero tale che 
+\begin_inset Formula $2^{k}\geqslant\mathit{n}$
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+(
+\series bold
+Heap di Fibonacci
+\series default
+) In questo caso la suddivisione è uguale al 
+\series bold
+buddy system
+\series default
+ ma la dimensione dei blocchi allocabili segue la sequenza di Fibonacci
+ e quindi crescono di dimensione più lentamente.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Garbage collector
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{quote}
+\end_layout
+
+\end_inset
+
+ Garbage collection is the process of automatically determining what memory
+ a program is no longer using, and making it available for other use.
+ It is performed by a subsystem called a garbage collector, which can be
+ part of the runtime system of a particular programming language, or an
+ add-on library.
+ Garbage collection can, but does not have to, be assisted by the compiler,
+ the hardware, or the OS.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Definizione presa da: 
+\begin_inset CommandInset href
+LatexCommand href
+name "The Very Basics of Garbage Collection"
+target "http://basen.oru.se/kurser/koi/2008-2009-p1/texter/gc/index.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{quote}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esistono varie tecniche di implementazione di un 
+\series bold
+garbage collector: 
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Con contatore dei riferimenti:
+\series default
+ ad ogni oggetto allocato viene assegnato un contatore pari a 1, quando
+ un oggetto comincia a puntare a quell'oggetto il suo contatore viene incrementa
+to di 1.
+ Quando la variabile che punta all'oggetto viene riassegnata ad un altro
+ oggetto, il contatore dell'oggetto originale viene decrementato di 1, quindi
+ gli oggetti possono essere deallocati quando hanno contatore uguale a 1
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+
+\series bold
+ Svantaggi:
+\series default
+ non è in grado di rimuovere strutture circolari (
+\begin_inset Formula $A$
+\end_inset
+
+ punta 
+\begin_inset Formula $B$
+\end_inset
+
+ e 
+\begin_inset Formula $B$
+\end_inset
+
+ punta 
+\begin_inset Formula $A$
+\end_inset
+
+) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Stop and copy:
+\series default
+ Lo heap viene diviso in due parti di uguali dimensione.
+ Solo una delle parti è attiva alla volta.
+ Quando la prima parte sta per esaurirsi, viene fatta una visita di tutti
+ gli oggetti allocati nella heap e quelli validi vengono copiati nella seconda
+ parte 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Mark and sweep:
+\series default
+ si attraversa l'albero composto da tutti gli oggetti memorizzati nello
+ heap, marcando quelli in uso.
+ Una volta fatto, vengono liberati tutti i blochhi non marcati.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Svantaggi:
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Causa frammentazione esterna 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Richiede tempo proporzionale alla dimensione dello heap, indipendentemente
+ da quale sia la percentuale di questo sia effettivamente utilizzata 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Le posizioni degli oggetti deallocati vengono spesso riciclate, cos' facendo
+ gli oggetti vecchi si trovano vicino a quelli nuovi.
+ Ciò potrebbe rappresentare un problema per la cache
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Mark and compact:
+\series default
+ funziona allo stesso modo del 
+\series bold
+mark and sweep
+\series default
+, solo che nella fase di 
+\series bold
+sweep
+\series default
+ gli oggetti in memoria vengono riallocati in maniera che siano tutti contigui
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Info generali (stack-heap-allocazione dinamica-allocazione statica)
+\end_layout
+
+\begin_layout Standard
+In un linguaggio a sola allocazione statica la memoria dedicata alle variabili
+ viene assegnata prima dell'esecuzione, questo fa si che la memoria dedicata
+ ai sottoprogrammi sia già definita prima dell'esecuzione.
+ La ricorsione molte volte viene implementata durante il 
+\series bold
+run-time
+\series default
+ per questo non è possibile definire la memoria usata prima dell'esecuzione,
+ ciò non permette la ricorsione con un allocazione statica.
+\end_layout
+
+\begin_layout Standard
+La 
+\series bold
+allocazione statica
+\series default
+ alloca sempre tutta la memoria che potrebbe essere necessaria, per cui
+ potrebbe essere allocata memoria anche per le procedure che non verranno
+ richiamate durante l'esecuzione del programma.
+ Invece nel caso di utilizzo di uno stack si alloca solo ciò che è necessario,
+ non avendo uno spreco della memoria.
+ 
+\end_layout
+
+\begin_layout Section*
+Programmazione ad oggetti
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Problema della classe fragile:
+\series default
+ Quando una classe, molto in alto nella gerarchia viene modificata 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ è possibile che qualche sottoclasse smetta di funzionare correttamente
+ perchè si ha apportato una modifica alla logica della classe sulla quale
+ si basavano le classi figli 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Devono essere ricompilate tutte le classi figlie in quanto devono essere
+ aggiornati gli 
+\series bold
+offset
+\series default
+ ai quale trovare le variabili 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Ereditarietà multipla:
+\series default
+ quando si estendono due classi che hanno un metodo con la stessa firma,
+ determinare il metodo giusto da chiamare è difficile 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+vTable:
+\series default
+ in un linguaggio ad oggetti con tipi statici una 
+\series bold
+vtable
+\series default
+ è una struttura dati che tiene traccia di tutti i metodi definiti, ridefiniti
+ o ereditati di una classe 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Problemi del ADT che il paradigma orientato agli oggetti risolve:
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ è più semplice estendere dei tipi di dato già esistenti 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ non c'è bisogno di andare a ridefinire tutte le operazioni già esistenti
+ sui tipi di dati derivati 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ possibilità di avere array con tipi di dato diversi ma compatibili 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Ereditarietà multipla con replicazione:
+\series default
+ 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+B extends A
+\end_layout
+
+\begin_layout Plain Layout
+
+C extends A
+\end_layout
+
+\begin_layout Plain Layout
+
+D extends B,C
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Shadowing:
+\series default
+ definizione di una variabile di istanza che con lo stesso tipo di una variabile
+ della classe padre.
+ Questo fa si che la variabile del padre non sia direttamente accessibile
+ alla classe figlio.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+Appunti basati sul lavoro di Slavetto: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://slavetto.github.io/primo-anno/
+\end_layout
+
+\end_inset
+
+ codice git: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/slavetto/slavetto.github.io
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-2"
+literal "false"
+
+\end_inset
+
+ Integrazione con le slide di Luca Albeni: 
+\begin_inset CommandInset href
+LatexCommand href
+name "SL_Slide_Luca_Albeni.zip"
+target "/Riferimenti/SL_Slide_Luca_Albeni.zip"
+type "file:"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
