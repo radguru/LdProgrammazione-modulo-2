@@ -1,0 +1,627 @@
+%% LyX 2.3.0 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{url}
+\usepackage{amssymb}
+\usepackage[unicode=true]
+ {hyperref}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Special footnote code from the package 'stblftnt.sty'
+%% Author: Robin Fairbairns -- Last revised Dec 13 1996
+\let\SF@@footnote\footnote
+\def\footnote{\ifx\protect\@typeset@protect
+    \expandafter\SF@@footnote
+  \else
+    \expandafter\SF@gobble@opt
+  \fi
+}
+\expandafter\def\csname SF@gobble@opt \endcsname{\@ifnextchar[%]
+  \SF@gobble@twobracket
+  \@gobble
+}
+\edef\SF@gobble@opt{\noexpand\protect
+  \expandafter\noexpand\csname SF@gobble@opt \endcsname}
+\def\SF@gobble@twobracket[#1]#2{}
+
+\makeatother
+
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Listing}
+
+\begin{document}
+
+\title{SML}
+
+\author{Gurpreet S. Surinder}
+
+\date{20/06/2018}
+
+\maketitle
+$\mathcal{M_{O_{L_{O}}}}$ denota una macchina ospite che capisce
+il linguaggio $\mathcal{L_{O}}$\\ Le CPU microprogrammate sono CPU
+di cui è possibile aggiornare il firmware. E' presente un microinterprete
+di microistruzioni che esegue il ciclo fetch/decode/load/execute/save.\\
+Quando due diversi nomi denotano lo stesso oggetto si sta verificando
+un effetto chiamato \textbf{aliasing}. \\ Una \textbf{dichiarazione
+}è un meccanismo con il quale si crea un'associazione nell'ambiente.
+\\ Il \textbf{binding }è il nome dato alla creazione di un'associazione
+tra nome ed un oggetto denotabile. \\ Un \textbf{identificatore }è
+una sequenza di caratteri usata per denotare qualcosa. \\ Il primo
+\textbf{costrutto if }è stato introdotto nel linguaggio \textbf{Algol
+60}. \\\textbf{ Programmazione in the large}: sviluppo di software
+di grandi dimensioni. \\\textbf{ Comando sequenziale}: è un comando
+che indica che due operazioni devono essere eseguite in sequenza ``;''.
+\\ \textbf{Go-to:} il codice tende a diventare complesso da seguire,
+difficile da implementare in tutte le sue casistiche (ad esempio quando
+si salta in un blocco diverso).
+
+\subsection*{Macchina astratta}
+
+Si denota con il simbolo $\mathcal{M}$\\Una macchina astratta è
+un insieme di algoritmi e strutture dati che permettono di eseguire
+e memorizzare programmi.\\ Come per le macchine fisiche (CPU) ad
+ogni macchina astratta è associato un suo linguaggio \\$\mathcal{M_{L}}$
+identifica una macchina astratta che capisce ed esegue il linguaggio
+$\mathcal{L}$. $\mathcal{L}$ è il linguaggio macchina di $\mathcal{M_{L}}$,
+un programma non è altro che una sequenza di istruzioni in $\mathcal{L}$
+
+\subsubsection*{Macchina astratta ad implementazione compilativa}
+\begin{itemize}
+\item \textbf{Vantaggi}: implementazione efficiente;
+\item \textbf{Svantaggi}: \begin{itemize}\item non (molto) portabile; \item
+perdita di informazione sulla struttura del programma sorgente. \end{itemize}
+\end{itemize}
+
+\subsubsection*{Macchina astratta ad implementazione interpretativa}
+\begin{itemize}
+\item \textbf{Vantaggi:} \begin{itemize}\item flessibile e portabile; \item debugging semplificato.\end{itemize}
+\item \textbf{Svantaggi}: poco efficiente.
+\end{itemize}
+
+\subsection*{Interprete e compilatore}
+
+\subsubsection*{Interprete}
+
+Si denota con il simbolo $\mathcal{I}$.\\ $\mathcal{I}$ capisce
+il programma $\mathcal{L}$ senza aver bisogno di trasformarlo ed
+implementa il ciclo fetch/decode/load/execute/save. \\ $\forall i\epsilon\mathcal{D},\mathcal{I_{L}^{L_{O}}}(\mathcal{P^{L}},i)=\mathcal{P^{L}}(i)$\\
+Per qualsiasi input $i$, l'interprete applicato a $\mathcal{P^{L}}$
+ed $i$ ritorna lo stesso risultato ritornato da $\mathcal{P^{L}}$
+applicato ad $i$\\ $\mathcal{I_{L}^{L_{O}}}$identifica un interprete
+$\mathcal{I}$ del linguaggio $\mathcal{L}$ scritto nel linguaggio
+$\mathcal{L_{O}}$
+
+\subsubsection*{Compilatore}
+
+Si denota con il simbolo $\mathcal{C}$ \\ Traduce il programma $\mathcal{L}_{1}$
+in un altro linguaggio $\mathcal{L}_{2}$. \\ $\mathcal{C_{LL_{O}}^{L_{A}}}$identifica
+un compilatore $\mathcal{C}$ da linguaggio $\mathcal{L_{O}}$ in
+linguaggio $\mathcal{L}$ scritto in linguaggio $\mathcal{L_{A}}$.
+\\ Un compilatore può anche trasformare una ricorsione in coda in
+modo da farla diventare una iterazione. \\ \begin{small}\textbf{
+Ricorsione:} è il processo che si verifica quando una routine richiama
+se stessa, di norma su porzioni di dati di volta in volta sempre più
+piccole, se è una ricorsione incontrollata può incorrere in un \textbf{stack
+overflow}. Esiste una variante chiamata \textbf{ricorsione in coda},
+la quale consiste nel chiamare la funzione che ritorna il valore senza
+fare ulteriori computazioni. \\\textbf{ Iterazione:} si realizza
+quando si eseguono più righe di codice al verificarsi di una determinata
+condizione. Presenta due tipi di iterazione: \begin{enumerate}\item
+\textbf{Iterazione determinata:} il numero di volte che il ciclo è
+eseguito è \textbf{stabilito a priori} e non può essere cambiato \item
+\textbf{Iterazione indeterminata:} il ciclo viene ripetuto \textbf{fino
+a }quando una qualche espressione diventa \textbf{falsa} \end{enumerate} \end{small}
+
+\subsection*{Linguaggio di programmazione}
+
+$\mathcal{L}$ identifica un linguaggio macchina.\\ $\mathcal{P^{L}}$
+denota un programma scritto in linguaggio $\mathcal{L}$
+
+\subsubsection*{Tipi (Type)}
+
+Un tipo di dato è una \textbf{collezione di valori omogenei e rappresentabili},
+dotata di un insieme di operazioni che manipolano tali valori.
+\begin{itemize}
+\item Un linguaggio di programmazione $\mathcal{L}$ è \textbf{insicuro}
+\textbf{ai tipi} se nel programma $\mathcal{P^{L}}$ è possibile violare
+vincoli di tipo senza che la macchina astratta $\mathcal{M_{L}}$
+se me accorga. 
+\item Due tipi sono \textbf{strutturalmente equivalenti }quando: \begin{itemize}\item
+un tipo equivale a se stesso \item un \textbf{alias} di un tipo è
+equivalente a quel tipo \item Se due tipi sono costruiti applicando
+lo stesso costruttore di tipo a tipi equivalenti, allora essi sono
+equivalenti. \end{itemize}
+\item Due tipi sono \textbf{equivalenti per nome} solo se hanno lo stesso
+nome (un tipo è equivalente per nome solo a se stesso)
+\item Le conversioni tra due tipi vengono dette \textbf{unchecked} quando
+non viene data la possibilità al compilatore di verificare se il \textbf{cast}
+è corretto.
+\item Il tipo di dato che fa parte di tipi di dato in cui è definito un
+ordine specifico è detto \textbf{ordinale}.
+\item Due tipi sono \textbf{compatibili} quando il tipo1 è ammesso in qualsiasi
+contesto in cui sarebbe richiesto il tipo2.
+\item Si ha \textbf{poliformismo universale parametrico} quando un valore
+ha un'infinità di tipi diversi che si ottengono da un unico schema
+di tipo generale.
+\item Si ha \textbf{inferenza di tipo} quando il tipo di dato viene rilevato
+ed automaticamente riconosciuto dal \textbf{type checker} (ML presenta
+inferenza di tipo).
+\item Un linguaggio ha \textbf{tipizzazione }\begin{itemize}\item\textbf{
+statica:} se al tempo di compilazione è possibile determinare tutti
+i vincoli dei tipi; \item\textbf{ dinamica:} se i controlli avvengono
+a tempo di esecuzione \end{itemize}
+\item \textbf{Record union:} due campi che condividono la stessa memoria
+e solo una di queste può essere assegnata alla volta 
+\begin{lstlisting}
+... union{
+	int ultimoanno;
+	struct{
+		int inpari;
+		int anno;
+	}stud_in_corso;
+}
+\end{lstlisting}
+ \begin{small}ultimoanno e stud\_in\_corso condividono la stessa
+memoria (di grandezza determinata dal campo più grande)\end{small}
+\item \textbf{Conversione implicita (coercizione):} la conversione da un
+tipo all'altro viene fatta dalla macchina astratta senza che questa
+sia specificata esplicitamente 
+\begin{lstlisting}
+int a=3;
+char b='3';
+a=b;
+\end{lstlisting}
+ \begin{small} è possibile eguagliare due tipi diversi grazie alla
+conversione implicita \end{small}
+\item Un sistema di tipi viene detto \textbf{polimorfo} quando uno stesso
+oggetto può avere più di un tipo
+\item Un valore esibisce \textbf{polimorfismo di sottotipo }(o \textbf{limitato})
+quando ha un'infinità di sottotipi diversi, che si ottengono da uno
+schema di tipo generale, sostituendo ad un opportuno parametro i sottotipi
+di un tipo assegnato (\textbf{extends }in Java)
+\item Un sistema di tipi viene detto \textbf{monomorfo} quando ogni oggetto
+del linguaggio ha un unico tipo
+\item I tipi di dato di cui i valori non sono costituiti da altri valori
+sono detti \textbf{scalari}
+\end{itemize}
+\textbf{Array}
+
+Le dimensioni di un array possono essere fissate in momenti diversi:
+\begin{itemize}\item \textbf{forma statica:} le dimensioni sono note
+a tempo di compilazione, viene memorizzato interamente nel \textbf{RDA}
+\item \textbf{forma fissata al momento dell'elaborazione:} le dimensioni
+vengono risolte al tempo di esecuzione. In questo caso l'array viene
+memorizzato nello \textbf{stack}, il \textbf{RDA} viene diviso in
+due parti: una a lunghezza fissa ed una a lunghezza variabile. Nella
+parte a lunghezza fissa viene memorizzato un puntatore all'array,
+il quale invece è allocato nella parte a lunghezza variabile.\item
+\textbf{forma dinamica:} non vengono mai fissate, le dimensioni sono
+variabili a tempo di esecuzione, per questo motivo l'array viene allocato
+nello \textbf{heap} \end{itemize} Quando un \textbf{array }viene
+allocato viene creato anche il suo \textbf{dope vector}. Il \textbf{dope
+vecor} contiene: \begin{itemize}\item un puntatore alla prima locazione
+nella quale è memorizzato l'array (sempre presente) \item \textbf{Range:
+}le dimensioni \item \textbf{Extent:} intervalli degli indici \item
+\textbf{Stride:} la distanza in memoria tra due elementi consecutivi
+\end{itemize} Un array può essere memorizzato in due modi: in \textbf{ordine
+di riga}, l'array viene memorizzato in modo contiguo, e in \textbf{ordine
+di colonna}, in questo caso l'array è memorizzato nei primi/second/terzi...
+elementi delle colone. La memorizzazione di un \textbf{array} per
+ordine di \textbf{riga} è più diffusa rispetto a quella per ordine
+di \textbf{colonna} perchè essa rende semplice lo \textbf{slicing}
+dell'array.
+
+\subsection*{Scope statico e dinamico}
+
+\subsubsection*{Scope statico}
+
+Lo \textbf{scope statico }per risolvere una variabile esamina partendo
+dal blocco interno fino ad arrivare a quello esterno.\\ Lo \textbf{scope
+statico} è più efficiente, le associazioni sono note a tempo di esecuzione
+ma è molto più complesso da implementare. \\ Presenta \textbf{il
+puntatore a catena statica}, esso punta al blocco immediatamente esterno
+a quello chiamato, così facilita la ricerca dei riferimenti ai \textbf{binding}
+non locali. \\ Viene creato anche il \textbf{display} cioè un vettore
+che memorizza un record di attivazione per ciascun blocco di annidamente;
+ciò serve a ridurre il costo di scansione della catena statica. Quando
+ci si riferisce ad un oggetto non locale, il suo puntatore viene reperito
+dal vettore (così non serve cercare in tutta la \textbf{catena statica}).
+
+\subsubsection*{Scope dinamico}
+
+Lo \textbf{scope dinamico} per risolvere una variabile cerca il più
+recente legame ancora attivo stabilito a tempo di esecuzione, è più
+semplice da implementare ma è meno efficiente e meno leggibile.
+
+\subsection*{Ambiente e sottodivisioni}
+
+Un \textbf{ambiente }è un insieme di associazioni fra nomi ed oggetti
+denotabili esistenti ad uno specifico punto dell'esecuzione del programma.
+\begin{itemize}
+\item \textbf{Ambiente locale:} insieme delle associazioni create nel blocco
+(inclusi i parametri)
+\item \textbf{Ambiente non locale:} associazioni ereditate da altri blocchi
+\item \textbf{Ambiente globale:} associazioni comuni a tutti i blocchi
+\end{itemize}
+Una funzione produce un \textbf{effetto collaterale} quando la funzione
+\textbf{produce/modifica }un valore o uno stato al di fuori del proprio
+\textbf{scope locale.}
+
+\subsubsection*{Blocco}
+
+Il \textbf{blocco} è una regione testuale di un programma avente un
+inizio e una fine, esso può contenere dichiarazioni locali alla regione.
+
+\subsection*{Chiamata e ritorno da una procedura}
+
+Sequenza di operazioni che avvengono per realizzare una chiamata ad
+una procedura(funzione):
+
+\begin{enumerate}\item Modifica del programma counter \item Allocazione
+dello spazio sulla pila \item Modifica del puntatore del record di
+attivazione \item Passaggio dei parametri \item Salvataggio dei
+registri \item Esecuzione del codice per l'inizializzazione (se presente)
+\end{enumerate}
+
+Sequenza di operazioni che avvengono al ritorno da una chiamata ad
+una procedura:
+
+\begin{enumerate}\item Ripristino del program counter \item Restituzione
+dei valori di ritorno \item Ripristino dei registri \item Esecuzione
+codice per la fializzazione (se esiste) \item Deallocazione dello
+spazio sulla pila \end{enumerate}
+
+\section*{Espressione \& Comandi}
+
+\subsection*{Espressione }
+
+Un'espressione è un'entità sintattica la cui valutazione produce un
+valore (oppure non termina). Essa presenta due elementi \begin{enumerate}\item
+\textbf{l-value: }espressioni che possono stare a sinistra di un'operazione
+di assegnamento (in generale indicano una locazione di memoria) \item
+\textbf{r-value:} espressioni che possono stare a destra di un'operazione
+di assegnamento e che quindi forniscono valori assegnabili a variabili
+\end{enumerate} Presenta anche due tipi di \textbf{valutazione: }\begin{enumerate}\item
+\textbf{Lazy: }tipo di valutazione in cui il calcolo viene ritardato
+fin quando non viene efettivamente richiesto. Questo tipo di valutazione
+è più difficile da implementare rispetto al prossimo \item \textbf{Eager:}
+l'espressione viene valutata appena viene legata ad una variabile.
+\end{enumerate} Di una espressione si può creare un \textbf{albero
+sintattico}, cioè un albero che rappresenta la struttura sintattica
+di una stringa in accordo a determinate forme grammaticali. \footnote{figura mancate}\\\textbf{
+Chiusura:} una coppia di ambiente e espressione in cui questa dev'essere
+valutata. L'ambiente deve comprendere (almeno) tutte le variabili
+libere dell'espressione.\\ Le espressioni solo le principali cause
+di \textbf{overflow }e/o di \textbf{underflow}, grazie alla somma/sottrazione/prodotto/divisione
+che come risultato riporta un numero troppo grande o troppo piccolo.
+
+\subsubsection*{Passaggio di parametri}
+
+Esistono vari tipi di passaggio di parametro ad una funzione: \begin{itemize}\item\textbf{Passaggio
+di parametri per nome:} il parametro viene sintatticamente ricopiato
+all'interno del corpo della funzione. La valutazione dell'ambiente
+del parametro dipende da due casi: \begin{itemize}\item \textbf{Per
+nome con cattura:} il valore della variabile passata ad una funzione
+viene ricercato all'interno della funzione. 
+\begin{lstlisting}
+int x=0;
+int foo(name int y){
+	int x=2;
+	return x+y;
+}
+...
+int a = foo(x+1);
+\end{lstlisting}
+\begin{small}In questo caso y non ha valore 0+1 ma diventa x+1, cioè
+la riga 4 diventa 
+\begin{lstlisting}
+...
+return x+x+1;
+...
+\end{lstlisting}
+\end{small}\item \textbf{Per nome senza cattura:} il parametro viene
+valutato nell'ambiente del chiamante, non in quello della funzione
+chiamata. Insieme al parametro viene passato anche il suo ambiente
+di valutazione\end{itemize}\item \textbf{Passaggio di parametri
+per valore-risultato:} il passaggio avviene per valore, al termine
+della procedura il valore del parametro attuale viene ricopiato nell'espressione
+con \textbf{l-value} passata\end{itemize}
+
+Si possono passare anche le funzioni come parametro, durante questa
+valutazione i nome non locali possono essere cercati in due modi:
+\begin{itemize}\item \textbf{Deep binding:} nel blocco in cui la
+funzione passata come parametro è stata dichiarata (Java) \item \textbf{Shallow
+binding:} nell'ambiente della funzione passata (linguaggio con scope
+dinamico)\item \textbf{Passaggio di parametri per valore:} viene
+valutato il \textbf{r-value} del parametro ed il valoe viene passato
+alla funzione. Nel caso i parametri siano delle strutture il passaggio
+per valore crea una copia campo-campo di quella struttura (costo notevole
+per strutture di grandi dimensioni).\item \textbf{Passaggio di parametri
+per costante:} avviene lo stesso tipo del \textbf{passaggio per valore}
+ma il valore non può essere modificato. Nel caso i parametri siano
+delle strutture il passaggio per costante passa un riferimento alla
+struttura e non permette che questa possa in qualche modo essere modificata.\item
+\textbf{Passaggio di parametri per riferimento:} viene passato alla
+funzione il \textbf{l-value} del parametro. \end{itemize}
+
+\subsubsection*{Notazione}
+
+Notazione infissa\\La notazione infissa consiste nel mettere l'operatore
+tra i due elementi ($a+b$). Questo tipo di notazione è difficile
+da realizzare rispetto alle altre notazione visto che necessita di
+conoscere l'ordine di precedenza degli operandi.\\Notazione prefissa\\La
+notazione prefissa consiste nel mettere l'operando prima dei due elementi
+($+a\quad b$).\\Notazione postfissa\\La notazione postfissa consiste
+nel mettere l'operando dopo i due elementi dell'espressione ($a\quad b+$).
+
+\subsection*{Comando}
+
+Un comando è un'entità sintattica la cui valutazione non restituisce
+valore ma può comunque avere effetti collaterali. \\Si dice che il
+comando \textbf{void} ritorni un unico valore invece che nessun valore,
+perchè essendo le funzioni dei linguaggi di programmazione derivate
+da funzioni matematiche. Essa non può non avere valore perchè non
+esistono funzioni matematiche con codominio vuoto. Quindi tutte le
+funzioni \textbf{void} ritornano un unico valore (non ci è dato sapere
+quale)
+
+\subsection*{Variabili}
+
+Il concetto di variabile che comunemente si ha ha due ``proprietà'':
+\begin{itemize}\item sono entità \textbf{denotabili}, ovvero entità
+a cui possiamo associare un nome \item possono contenere un valore
+(locazioni di memoria) \end{itemize} Esistono anche altri tipi di
+variabili che cambiano in base al tipo di linguaggio: \begin{itemize}\item
+\textbf{Linguaggi iperativi: }\begin{small} \begin{itemize}\item
+variabili modificabili \item aree di memoria associate ad un nome,
+che possono contenere un valore memorizzabile \item \textbf{doppio
+mapping:} nome $\rightarrow$ variabile e variabile $\rightarrow$
+valore memorizzato \end{itemize} \end{small} \item \textbf{Linguaggi
+orientati agli oggetti:} \begin{small} \begin{itemize}\item variabili
+con \textbf{modello a riferimento} \item riferimenti (l-value) ad
+oggetti memorizzati nello heap \item \textbf{assegnamento:} non modifica
+l'oggetto riferito, ma cambia il riferimento \end{itemize}\end{small}\item
+\textbf{Linguaggi funzionali:} non presentano variabili modificabili.
+\end{itemize}
+
+\section*{Memoria\protect\footnote{Riferimenti e integrazione: \protect\href{file:/Riferimenti/18-DynAlloc.pdf}{pdf\_2010\_Claudio\_Fornaro}}}
+
+La memoria può essere allocata nello stack , nello heap o nel Data
+Segment di un programma, il moTipimento di allocazione può accadere
+o durante il \textbf{run-time }o il \textbf{compile-time. }
+
+Ci sono 3 tipi di allocazione della memoria: \begin{itemize}\item
+Statica \item Dinamica mediante stack\item Dinamica mediante heap.\end{itemize}
+
+\subsection*{Allocazione di memoria}
+
+Il termine allocazione viene utilizzato per indicare l\textquoteright assegnazione
+di un blocco di memoria RAM ad un programma.
+
+\subsubsection*{Allocazione statica}
+
+Si ha allocazione statica quando viene definita una variabile statica
+(interna o esterna con la clausola \textbf{static}), essa non è modificabile
+e non può nemmeno essere rilasiata. Questa variabile viene definita
+durante il \textbf{compile-time} ed allocata nel \textbf{Data-segment}. 
+
+Un oggetto che viene \textbf{allocato staticamente} mantiene uno stesso
+indirizzo d memoria per tutta l'esecuzione del programma.
+
+\subsubsection*{Allocazione dinamica}
+
+Si ha \textbf{allocazione dinamica} durante il \textbf{run-time},
+cioè tutte le varibili istanziate durante una funzione o una ricorsione.
+Viene usato principalmente lo \textbf{heap} per questo tipo di allocazione,
+quinidi è si modificabile e rilasciabile ma solo con chiamate opportune
+da parte del programmatore.
+
+\subsection*{Stack \& Heap}
+
+Nella scelta della memoria tra \textbf{stack }e \textbf{heap} dipende
+sia dal compilatore sia dal programmatore, per esempi i risultati
+intermedi di un'espressione non vengono sempre memorizzati nello stack
+ma il copilatore può decidere dove allocare lo spazio.
+
+\subsubsection*{Stack}
+
+\begin{quote}Function parameters and local variables are generally
+allocated on a stack. A stack, in computer terms, is basically a linear
+structure in memory where information (values for variables, for example)
+are stored sequentially with the most recently added value at the
+\textquotedblleft top\textquotedblright{} or the end of the memory
+structure from which values are also read and removed. This allows
+a function to call itself recursively, and have separate copies of
+all its parameters and local variables retained separately for each
+call. The variable values are all \textquotedblleft pushed\textquotedblright{}
+onto the stack, and then execution begins with a new set of values
+in the new call. When the function returns, the variable values are
+restored by \textquotedblleft popping\textquotedblright{} the values
+from the \textquotedblleft top\textquotedblright{} of the stack in
+reverse order, thus restoring the previous values of all the variables.\footnote{Descrizione presa da: \href{https://www.quora.com/What-is-the-difference-between-the-stack-and-the-heap}{What is the difference between the stack and the heap?}}\end{quote}
+
+\textbf{RDA (stack frame): }lo \textbf{stack frame} memorizza nello
+stack tutte le informazioni relative all'istanza di un sottoprogramma.\begin{quote} 
+
+A stack frame is a memory management technique used in some programming
+languages for generating and eliminating temporary variables. In other
+words, it can be considered the collection of all information on the
+stack pertaining to a subprogram call. Stack frames are only existent
+during the runtime process. Stack frames help programming languages
+in supporting recursive functionality for subroutines. A stack frame
+also known as an activation frame or activation record.\footnote{Origine e approfondimenti: \href{https://www.techopedia.com/definition/22304/stack-frame}{Stack Frame}}
+\end{quote} 
+
+Durante una funzione nello \textbf{stack frame} vengono memorizzati:\begin{itemize}\item Risultati intermedi\item Variabili locali\item Puntatore
+di catena dinamica:\begin{small} punta al record di attivazione precedente;
+dal momento che i record di attivazione hanno tutti una dimensione
+diversa, bisogna tenere traccia di dove inizia lo \textbf{stack frame
+precedente}, in modo da poterlo ripristinare in seguito.\end{small}
+\item Puntatore di catena statica (se viene implementato scope statico)
+\item Indirizzo di ritorno \item Indirizzo del risultato \item
+Parametri \item Nel caso di un metodo anche un riferimento all'oggetto
+su cui il metodo viene chiamato \end{itemize}
+
+Invece nel caso di \textbf{stack frame con blocchi anonimi} vengono
+memorizzati:
+
+\begin{itemize}\item Puntatore di catena dinamica \item Variabili
+locali \item Risultati intermedi delle espressioni \end{itemize}
+
+\subsubsection*{Heap}
+
+\begin{quote}A heap is generally used for larger data structures
+or memory that the programmer wants to explicitly manage. Whenever
+\textquotedblleft new\textquotedblright{} or \textquotedblleft malloc\textquotedblright{}
+is used in C++ or C respectively, the memory for that request is allocated
+on a heap, and then it\textquoteright s up to the coder to make sure
+that is gets freed at the appropriate time with \textquotedblleft delete\textquotedblright{}
+or \textquotedblleft free\textquotedblright . Whereas stack data is
+usually easy to manage because the compiler allocates and frees the
+space, heap data is easy to mess up because it often requires manually
+written code to determine when it gets allocated and freed. But it\textquoteright s
+appropriate if you want to manage large long-lived blocks of memory
+independently of the scope of a function. And although all memory
+in a computer is linear at some level, a heap is less linear in the
+way it\textquoteright s managed because it maintains pointers to different
+areas of memory making it easier to allocate and free blocks of memory
+in an arbitrary sequence instead of strictly in reverse order.\footnote{Descrizione presa da: \href{https://www.quora.com/What-is-the-difference-between-the-stack-and-the-heap}{What is the difference between the stack and the heap?}}\end{quote}
+\begin{enumerate}
+\item \textbf{Heap a blocchi variabili: }lo heap in questo caso è costituito
+da un unico blocco di memoria che viene suddiviso, creando blocchi
+di grandezza utile durante il runtime. \begin{itemize}\item(\textbf{Lista
+libera}) Quando viene richieste della memoria si restituisce un blocco
+di dimenzione più appropriata e lo si rimuove dalla lista. Quando
+invece la memoria viene liberata, essa viene riaggiunta alla lista
+e fusa con i blocchi liberi adiacenti in modo da formare un unicoblocco
+di memoria libera. \item (\textbf{Compattazione della memoria libera})
+Lo heap ogni volta che viene richiesta memoria viene suddiviso continuando
+dalla allocazione precedente senza liberare lo spazio prima (anche
+in caso di deallocazione dell'oggetto), ma quando finisce la memoria
+di heap libera, questo metodo ``\textbf{compatta}'' i blocchi allocati,
+creando una zona continua di spazio. Alla fine aggiorna il puntatore
+dello heap allo spazio così liberato. \item(\textbf{Best fit}) La
+strategia \textbf{best fit} consiste nello scorrere tutta la lista
+alla ricerca del blocco che combacia meglio con la dimensione del
+blocco richiesto\item(\textbf{First fit}) La strategia \textbf{first
+fit }consiste nel assegnare una soglia $\mathit{s}$ alla dimensione
+$\mathit{d}$ del blocco richiesto, restituendo il primo blocco che
+ha dimensione compresa tra $\mathit{d}$ e $\mathit{d+s}$\end{itemize}
+Questo tipo di gestione dello \textbf{heap} è soggetto a \textbf{due}
+tipi di \textbf{frammentazione:}\begin{enumerate}\item\textbf{ interna},
+ovvero il blocco di memoria che viene dato alla funzione (e/o variabile....)
+è leggermente più grande di quello richiesto (la differenza di memoria
+è sprecata)\item\textbf{esterna}, ovvero non è possibile trovare
+$\mathit{n}$ byte contigui da restituire al programma anche se in
+totale sono presenti, la memoria disponibile è sparsa per tutto lo
+heap.\end{enumerate}
+\item \textbf{Heap a blocchi di dimensione fissa:} lo \textbf{heap} è costituito
+da una lista di $\mathrm{n}$ blocchi di dimensione fissa. Quando
+viene richiesta della memoria, il primo elemento libero viene rimosso
+dalla lista e restituito al richiedente, mentre il puntatore viene
+spostato sul bloccosucessivo. Alla deallocazione il blocco viene reinserito
+nella lista. \begin{itemize}\item (\textbf{Buddy system}) Il \textbf{buddy
+system }suddivide i blocchi in potenze di 2, quando viene richiesto
+un blocco di dimensione $\mathit{n}$ si cerca il più piccolo blocco
+libero tale che $2^{k}\geqslant\mathit{n}$ \item(\textbf{Heap di
+Fibonacci}) In questo caso la suddivisione è uguale al \textbf{buddy
+system} ma la dimensione dei blocchi allocabili segue la sequenza
+di Fibonacci e quindi crescono di dimensione più lentamente.\end{itemize}
+\end{enumerate}
+
+\subsection*{Garbage collector}
+
+\begin{quote} Garbage collection is the process of automatically
+determining what memory a program is no longer using, and making it
+available for other use. It is performed by a subsystem called a garbage
+collector, which can be part of the runtime system of a particular
+programming language, or an add-on library. Garbage collection can,
+but does not have to, be assisted by the compiler, the hardware, or
+the OS.\footnote{Definizione presa da: \href{http://basen.oru.se/kurser/koi/2008-2009-p1/texter/gc/index.html}{The Very Basics of Garbage Collection}}
+\end{quote}
+
+Esistono varie tecniche di implementazione di un \textbf{garbage collector:
+}\begin{itemize}\item \textbf{Con contatore dei riferimenti:} ad
+ogni oggetto allocato viene assegnato un contatore pari a 1, quando
+un oggetto comincia a puntare a quell'oggetto il suo contatore viene
+incrementato di 1. Quando la variabile che punta all'oggetto viene
+riassegnata ad un altro oggetto, il contatore dell'oggetto originale
+viene decrementato di 1, quindi gli oggetti possono essere deallocati
+quando hanno contatore uguale a 1\\\textbf{ Svantaggi:} non è in
+grado di rimuovere strutture circolari ($A$ punta $B$ e $B$ punta
+$A$) \item \textbf{Stop and copy:} Lo heap viene diviso in due parti
+di uguali dimensione. Solo una delle parti è attiva alla volta. Quando
+la prima parte sta per esaurirsi, viene fatta una visita di tutti
+gli oggetti allocati nella heap e quelli validi vengono copiati nella
+seconda parte \item \textbf{Mark and sweep:} si attraversa l'albero
+composto da tutti gli oggetti memorizzati nello heap, marcando quelli
+in uso. Una volta fatto, vengono liberati tutti i blochhi non marcati.
+\\ \textbf{Svantaggi:} \begin{itemize}\item Causa frammentazione
+esterna \item Richiede tempo proporzionale alla dimensione dello
+heap, indipendentemente da quale sia la percentuale di questo sia
+effettivamente utilizzata \item Le posizioni degli oggetti deallocati
+vengono spesso riciclate, cos' facendo gli oggetti vecchi si trovano
+vicino a quelli nuovi. Ciò potrebbe rappresentare un problema per
+la cache\end{itemize}\item \textbf{Mark and compact:} funziona allo
+stesso modo del \textbf{mark and sweep}, solo che nella fase di \textbf{sweep}
+gli oggetti in memoria vengono riallocati in maniera che siano tutti
+contigui \end{itemize}
+
+\subsection*{Info generali (stack-heap-allocazione dinamica-allocazione statica)}
+
+In un linguaggio a sola allocazione statica la memoria dedicata alle
+variabili viene assegnata prima dell'esecuzione, questo fa si che
+la memoria dedicata ai sottoprogrammi sia già definita prima dell'esecuzione.
+La ricorsione molte volte viene implementata durante il \textbf{run-time}
+per questo non è possibile definire la memoria usata prima dell'esecuzione,
+ciò non permette la ricorsione con un allocazione statica.
+
+La \textbf{allocazione statica} alloca sempre tutta la memoria che
+potrebbe essere necessaria, per cui potrebbe essere allocata memoria
+anche per le procedure che non verranno richiamate durante l'esecuzione
+del programma. Invece nel caso di utilizzo di uno stack si alloca
+solo ciò che è necessario, non avendo uno spreco della memoria. 
+
+\section*{Programmazione ad oggetti}
+
+\textbf{Problema della classe fragile:} Quando una classe, molto in
+alto nella gerarchia viene modificata \begin{itemize}\item è possibile
+che qualche sottoclasse smetta di funzionare correttamente perchè
+si ha apportato una modifica alla logica della classe sulla quale
+si basavano le classi figli \item Devono essere ricompilate tutte
+le classi figlie in quanto devono essere aggiornati gli \textbf{offset}
+ai quale trovare le variabili \end{itemize} \textbf{Ereditarietà
+multipla:} quando si estendono due classi che hanno un metodo con
+la stessa firma, determinare il metodo giusto da chiamare è difficile
+\\ \textbf{vTable:} in un linguaggio ad oggetti con tipi statici
+una \textbf{vtable} è una struttura dati che tiene traccia di tutti
+i metodi definiti, ridefiniti o ereditati di una classe \\ \textbf{Problemi
+del ADT che il paradigma orientato agli oggetti risolve:} \begin{itemize}\item
+è più semplice estendere dei tipi di dato già esistenti \item non
+c'è bisogno di andare a ridefinire tutte le operazioni già esistenti
+sui tipi di dati derivati \item possibilità di avere array con tipi
+di dato diversi ma compatibili \end{itemize} \textbf{Ereditarietà
+multipla con replicazione:} 
+\begin{lstlisting}
+B extends A
+C extends A
+D extends B,C
+\end{lstlisting}
+ \textbf{Shadowing:} definizione di una variabile di istanza che con
+lo stesso tipo di una variabile della classe padre. Questo fa si che
+la variabile del padre non sia direttamente accessibile alla classe
+figlio.
+\begin{thebibliography}{1}
+\bibitem{key-1}Appunti basati sul lavoro di Slavetto: \url{https://slavetto.github.io/primo-anno/}
+codice git: \url{https://github.com/slavetto/slavetto.github.io}
+
+\bibitem{key-2} Integrazione con le slide di Luca Albeni: \href{file:/Riferimenti/SL_Slide_Luca_Albeni.zip}{SL\_Slide\_Luca\_Albeni.zip}
+\end{thebibliography}
+
+\end{document}
