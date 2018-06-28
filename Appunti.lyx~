@@ -1474,47 +1474,60 @@ Lo
 scope statico 
 \series default
 per risolvere una variabile esamina partendo dal blocco interno fino ad
- arrivare a quello esterno.
-\end_layout
-
-\begin_layout Standard
-Lo 
-\series bold
-scope statico
-\series default
- è più efficiente, le associazioni sono note a tempo di esecuzione ma è
- molto più complesso da implementare.
+ arrivare a quello esterno, è più efficiente visto che le associazioni sono
+ note a tempo di esecuzione ma è molto più complesso da implementare.
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
 \end_layout
 
-\begin_layout Standard
-Lo scope statico presenta la 
+\end_inset
+
+ Presenta 
 \series bold
 il puntatore a catena statica
 \series default
-, esso punta al blocco immediatamente esterno a quello chiamato, esso facilita
- la ricerca dei riferimenti a 
+, il quale punta al blocco immediatamente esterno a quello chiamato, così
+ facilita la ricerca dei riferimenti ai 
 \series bold
 binding
 \series default
  non locali.
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
 \end_layout
 
-\begin_layout Standard
-Lo scope statico presenta il 
+\end_inset
+
+ Viene creato anche il 
 \series bold
 display
 \series default
  cioè un vettore che memorizza un record di attivazione per ciascun blocco
- di annidamente; ciò serve a ridurre il costo di scansione della catena
- statica.
- Quando ci si riferisce ad un oggetto non locale, il suo puntatore viene
- reperito dal vettore (così non serve cercare in tutta la 
+ di annidamento; ciò serve a ridurre il costo di scansione della catena
+ statica (quando ci si riferisce ad un oggetto non locale, il suo puntatore
+ viene reperito dal vettore, così non serve cercare in tutta la 
 \series bold
 catena statica
 \series default
-).
+ risparmiando in questo modo le risorse della macchina).
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1524,18 +1537,11 @@ Scope dinamico
 \begin_layout Standard
 Lo 
 \series bold
-scope dinamico
+scope dinamico,
 \series default
  per risolvere una variabile cerca il più recente legame ancora attivo stabilito
- a tempo di esecuzione.
-\end_layout
-
-\begin_layout Standard
-Lo 
-\series bold
-scope dinamico 
-\series default
-è più semplice da implementare ma è meno efficiente e meno leggibile.
+ a tempo di esecuzione, questo scope è più semplice da implementare ma è
+ meno efficiente e meno leggibile.
 \end_layout
 
 \begin_layout Subsection*
@@ -1582,7 +1588,7 @@ effetto collaterale
 \series default
  quando la funzione 
 \series bold
-produce/modifica 
+produce e/o modifica 
 \series default
 un valore o uno stato al di fuori del proprio 
 \series bold
@@ -1704,12 +1710,8 @@ end{enumerate}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Sequenza di operazioni che avvengono al ritorno da una chiamata ad una procedura
-:
+ Sequenza di operazioni che avvengono al ritorno da una chiamata ad una
+ procedura:
 \end_layout
 
 \begin_layout Standard
@@ -1861,7 +1863,8 @@ end{enumerate}
 
 \end_inset
 
- Presenta anche due tipi di 
+ Un espressione può essere valutata(eseguita) in due momenti diversi i quali
+ prendono il nome di 
 \series bold
 valutazione: 
 \series default
@@ -1929,7 +1932,17 @@ albero sintattico
 status open
 
 \begin_layout Plain Layout
-figura mancate
+Per approfondimenti sull'albero sintattico: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Sintassi e Semantica - Alfonso Miola"
+target "/Riferimenti/Linguaggi_Sintassi_e_Semantica.pdf"
+type "file:"
+literal "false"
+
+\end_inset
+
+, slide 27 in poi
 \end_layout
 
 \end_inset
@@ -1977,8 +1990,8 @@ e/o di
 \series bold
 underflow
 \series default
-, grazie alla somma/sottrazione/prodotto/divisione che come risultato riporta
- un numero troppo grande o troppo piccolo.
+, grazie alle operazioni matematiche che come risultato riportano un numero
+ troppo grande o troppo piccolo.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1986,7 +1999,7 @@ Passaggio di parametri
 \end_layout
 
 \begin_layout Standard
-Esistono vari tipi di passaggio di parametro ad una funzione: 
+Esistono vari modi per passare un parametro ad una funzione: 
 \begin_inset ERT
 status open
 
@@ -2173,7 +2186,77 @@ Passaggio di parametri per valore-risultato:
 \series bold
 l-value
 \series default
- passata
+ passata 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Passaggio di parametri per valore:
+\series default
+ viene valutato il 
+\series bold
+r-value
+\series default
+ del parametro ed il valore viene passato alla funzione.
+ Nel caso i parametri siano delle strutture il passaggio per valore crea
+ una copia campo-campo di quella struttura (costo notevole per strutture
+ di grandi dimensioni).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Passaggio di parametri per costante:
+\series default
+ avviene lo stesso procedimento del 
+\series bold
+passaggio per valore
+\series default
+ ma il valore non può essere modificato.
+ Nel caso i parametri siano delle strutture il passaggio per costante passa
+ un riferimento alla struttura e non permette che questa possa in qualche
+ modo essere modificata.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Passaggio di parametri per riferimento:
+\series default
+ viene passato alla funzione il 
+\series bold
+l-value
+\series default
+ del parametro.
+ 
 \begin_inset ERT
 status open
 
@@ -2186,12 +2269,12 @@ end{itemize}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Si possono passare anche le funzioni come parametro, durante questa valutazione
- i nome non locali possono essere cercati in due modi: 
+ Si possono passare anche le funzioni come parametro, durante questa valutazione
+ i 
+\series bold
+binding
+\series default
+ non locali possono essere cercati in due modi: 
 \begin_inset ERT
 status open
 
@@ -2236,23 +2319,43 @@ status open
 
 
 \backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Notazione
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
 item
 \end_layout
 
 \end_inset
 
+ Notazione infissa: consiste nel mettere l'operatore tra i due elementi
+ (
+\begin_inset Formula $a+b$
+\end_inset
+
+).
+ Questo tipo di notazione è difficile da realizzare rispetto alle altre
+ notazioni visto che necessita di conoscere l'ordine di precedenza degli
+ operandi.
  
-\series bold
-Passaggio di parametri per valore:
-\series default
- viene valutato il 
-\series bold
-r-value
-\series default
- del parametro ed il valoe viene passato alla funzione.
- Nel caso i parametri siano delle strutture il passaggio per valore crea
- una copia campo-campo di quella struttura (costo notevole per strutture
- di grandi dimensioni).
 \begin_inset ERT
 status open
 
@@ -2265,18 +2368,13 @@ item
 
 \end_inset
 
+ Notazione prefissa: consiste nel mettere l'operando prima dei due elementi
+ (
+\begin_inset Formula $+a\quad b$
+\end_inset
+
+).
  
-\series bold
-Passaggio di parametri per costante:
-\series default
- avviene lo stesso tipo del 
-\series bold
-passaggio per valore
-\series default
- ma il valore non può essere modificato.
- Nel caso i parametri siano delle strutture il passaggio per costante passa
- un riferimento alla struttura e non permette che questa possa in qualche
- modo essere modificata.
 \begin_inset ERT
 status open
 
@@ -2289,15 +2387,12 @@ item
 
 \end_inset
 
- 
-\series bold
-Passaggio di parametri per riferimento:
-\series default
- viene passato alla funzione il 
-\series bold
-l-value
-\series default
- del parametro.
+ Notazione postfissa: consiste nel mettere l'operando dopo i due elementi
+ dell'espressione (
+\begin_inset Formula $a\quad b+$
+\end_inset
+
+).
  
 \begin_inset ERT
 status open
@@ -2312,107 +2407,6 @@ end{itemize}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsubsection*
-Notazione
-\end_layout
-
-\begin_layout Standard
-Notazione infissa
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
-La notazione infissa consiste nel mettere l'operatore tra i due elementi
- (
-\begin_inset Formula $a+b$
-\end_inset
-
-).
- Questo tipo di notazione è difficile da realizzare rispetto alle altre
- notazione visto che necessita di conoscere l'ordine di precedenza degli
- operandi.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
-Notazione prefissa
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
-La notazione prefissa consiste nel mettere l'operando prima dei due elementi
- (
-\begin_inset Formula $+a\quad b$
-\end_inset
-
-).
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
-Notazione postfissa
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
-La notazione postfissa consiste nel mettere l'operando dopo i due elementi
- dell'espressione (
-\begin_inset Formula $a\quad b+$
-\end_inset
-
-).
 \end_layout
 
 \begin_layout Subsection*
@@ -2445,13 +2439,12 @@ void
 \series default
  ritorni un unico valore invece che nessun valore, perchè essendo le funzioni
  dei linguaggi di programmazione derivate da funzioni matematiche.
- Essa non può non avere valore perchè non esistono funzioni matematiche
- con codominio vuoto.
- Quindi tutte le funzioni 
+ Esse non possono non avere un valore, grazie al fatto che non esistono
+ funzioni matematiche con codominio vuoto, quindi tutte le funzioni 
 \series bold
 void
 \series default
- ritornano un unico valore (non ci è dato sapere quale)
+ ritornano un unico valore (non ci è dato sapere quale).
 \end_layout
 
 \begin_layout Subsection*
@@ -2512,8 +2505,8 @@ end{itemize}
 
 \end_inset
 
- Esistono anche altri tipi di variabili che cambiano in base al tipo di
- linguaggio: 
+ Le variabili hanno diverse proprietà in base al tipo di linguaggio in cui
+ si trovano: 
 \begin_inset ERT
 status open
 
@@ -2530,9 +2523,109 @@ item
 
  
 \series bold
-Linguaggi iperativi: 
+Linguaggi iperativi 
 \series default
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Questo tipo di linguaggio presenta delle variabili modificabili, quindi
+ le aree di memoria associate ad un nome possono contenere un valore modificabil
+e.
+ I linguaggi iperativi sono gli unici che presentano il 
+\series bold
+doppio mapping
+\series default
+ cioè il nome è legato alla variabile la quale a sua volta al valore memorizzato
+ in essa.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Linguaggi orientati agli oggetti
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ I linguaggi orientati agli oggetti presentato delle variabili con 
+\series bold
+modello a riferimento
+\series default
+, di conseguenza gli l-value di un'espressione possono fare riferimento
+ ad uno spazio nello heap.
+ Ciò permette anche la modifica dell'assegnamento di uno spazio di memoria.
+ 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+Oggetto l;
+\end_layout
+
+\begin_layout Plain Layout
+
+Oggetto s;
+\end_layout
+
+\begin_layout Plain Layout
+
+l = new Oggetto();
+\end_layout
+
+\begin_layout Plain Layout
+
+s = l;
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset ERT
 status open
 
@@ -2545,143 +2638,26 @@ begin{small}
 
 \end_inset
 
- 
+ s punta allo stesso spazio in memoria di l 
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
 
-\backslash
-begin{itemize}
-\backslash
-item
-\end_layout
-
-\end_inset
-
- variabili modificabili 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
- aree di memoria associate ad un nome, che possono contenere un valore memorizza
-bile 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
- 
-\series bold
-doppio mapping:
-\series default
- nome 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- variabile e variabile 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- valore memorizzato 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{itemize} 
-\backslash
-end{small} 
-\backslash
-item
-\end_layout
-
-\end_inset
-
- 
-\series bold
-Linguaggi orientati agli oggetti:
-\series default
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{small} 
-\backslash
-begin{itemize}
-\backslash
-item
-\end_layout
-
-\end_inset
-
- variabili con 
-\series bold
-modello a riferimento
-\series default
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
- riferimenti (l-value) ad oggetti memorizzati nello heap 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
- 
-\series bold
-assegnamento:
-\series default
- non modifica l'oggetto riferito, ma cambia il riferimento 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{itemize}
 \backslash
 end{small}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
 item
 \end_layout
@@ -2735,8 +2711,7 @@ literal "false"
 
 \begin_layout Standard
 La memoria può essere allocata nello stack , nello heap o nel Data Segment
- di un programma, il moTipimento di allocazione può accadere o durante il
- 
+ di un programma, il momento di allocazione può accadere o durante il 
 \series bold
 run-time 
 \series default
@@ -2744,10 +2719,23 @@ o il
 \series bold
 compile-time.
  
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
 \end_layout
 
-\begin_layout Standard
-Ci sono 3 tipi di allocazione della memoria: 
+\end_inset
+
+ Esistono 3 tipi di allocazione della memoria: 
 \begin_inset ERT
 status open
 
@@ -2823,7 +2811,7 @@ Si ha allocazione statica quando viene definita una variabile statica (interna
 \series bold
 static
 \series default
-), essa non è modificabile e non può nemmeno essere rilasiata.
+), essa non è modificabile e non può nemmeno essere rilasciata.
  Questa variabile viene definita durante il 
 \series bold
 compile-time
@@ -2834,14 +2822,25 @@ Data-segment
 \series default
 .
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
 \end_layout
 
-\begin_layout Standard
-Un oggetto che viene 
+\end_inset
+
+ Invece un oggetto che viene 
 \series bold
 allocato staticamente
 \series default
- mantiene uno stesso indirizzo d memoria per tutta l'esecuzione del programma.
+ mantiene uno stesso indirizzo di memoria per tutta l'esecuzione del programma.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2862,8 +2861,8 @@ run-time
 \series bold
 heap
 \series default
- per questo tipo di allocazione, quinidi è si modificabile e rilasciabile
- ma solo con chiamate opportune da parte del programmatore.
+ per questo tipo di allocazione, quindi è modificabile e rilasciabile ma
+ solo con chiamate opportune da parte del programmatore.
 \end_layout
 
 \begin_layout Subsection*
@@ -2879,7 +2878,7 @@ e
 \series bold
 heap
 \series default
- dipende sia dal compilatore sia dal programmatore, per esempi i risultati
+ dipende sia dal compilatore sia dal programmatore, per esempio i risultati
  intermedi di un'espressione non vengono sempre memorizzati nello stack
  ma il copilatore può decidere dove allocare lo spazio.
 \end_layout
@@ -2946,12 +2945,8 @@ end{quote}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
 \series bold
-RDA (stack frame): 
+ RDA (stack frame): 
 \series default
 lo 
 \series bold
@@ -3014,11 +3009,7 @@ end{quote}
 
 \end_inset
 
- 
-\end_layout
-
-\begin_layout Standard
-Durante una funzione nello 
+ Durante una funzione nello 
 \series bold
 stack frame
 \series default
@@ -3032,16 +3023,38 @@ status open
 \backslash
 begin{itemize}
 \backslash
-item Risultati intermedi
-\backslash
-item Variabili locali
-\backslash
-item 
+item
 \end_layout
 
 \end_inset
 
-Puntatore di catena dinamica:
+ i risultati intermedi 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ le variabili locali 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ il puntatore di catena dinamica:
 \begin_inset ERT
 status open
 
@@ -3086,7 +3099,7 @@ item
 
 \end_inset
 
- Puntatore di catena statica (se viene implementato scope statico) 
+ il puntatore di catena statica (se viene implementato scope statico) 
 \begin_inset ERT
 status open
 
@@ -3099,7 +3112,7 @@ item
 
 \end_inset
 
- Indirizzo di ritorno 
+ l'indirizzo di ritorno 
 \begin_inset ERT
 status open
 
@@ -3112,7 +3125,7 @@ item
 
 \end_inset
 
- Indirizzo del risultato 
+ l'indirizzo del risultato 
 \begin_inset ERT
 status open
 
@@ -3125,7 +3138,7 @@ item
 
 \end_inset
 
- Parametri 
+ e i parametri 
 \begin_inset ERT
 status open
 
@@ -3138,7 +3151,7 @@ item
 
 \end_inset
 
- Nel caso di un metodo anche un riferimento all'oggetto su cui il metodo
+ nel caso di un metodo anche un riferimento all'oggetto su cui il metodo
  viene chiamato 
 \begin_inset ERT
 status open
@@ -3152,11 +3165,7 @@ end{itemize}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Invece nel caso di 
+ Invece nel caso di 
 \series bold
 stack frame con blocchi anonimi
 \series default
@@ -3178,7 +3187,7 @@ item
 
 \end_inset
 
- Puntatore di catena dinamica 
+ il puntatore di catena dinamica 
 \begin_inset ERT
 status open
 
@@ -3191,7 +3200,7 @@ item
 
 \end_inset
 
- Variabili locali 
+ le variabili locali 
 \begin_inset ERT
 status open
 
@@ -3204,7 +3213,7 @@ item
 
 \end_inset
 
- Risultati intermedi delle espressioni 
+ i risultati intermedi delle espressioni 
 \begin_inset ERT
 status open
 
@@ -3315,7 +3324,7 @@ Lista libera
 ) Quando viene richieste della memoria si restituisce un blocco di dimenzione
  più appropriata e lo si rimuove dalla lista.
  Quando invece la memoria viene liberata, essa viene riaggiunta alla lista
- e fusa con i blocchi liberi adiacenti in modo da formare un unicoblocco
+ e fusa con i blocchi liberi adiacenti in modo da formare un unico blocco
  di memoria libera.
  
 \begin_inset ERT
@@ -3424,75 +3433,7 @@ end{itemize}
 
 \end_inset
 
- Questo tipo di gestione dello 
-\series bold
-heap
-\series default
- è soggetto a 
-\series bold
-due
-\series default
- tipi di 
-\series bold
-frammentazione:
-\series default
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{enumerate}
-\backslash
-item
-\end_layout
-
-\end_inset
-
-
-\series bold
- interna
-\series default
-, ovvero il blocco di memoria che viene dato alla funzione (e/o variabile....)
- è leggermente più grande di quello richiesto (la differenza di memoria
- è sprecata)
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
-
-\series bold
-esterna
-\series default
-, ovvero non è possibile trovare 
-\begin_inset Formula $\mathit{n}$
-\end_inset
-
- byte contigui da restituire al programma anche se in totale sono presenti,
- la memoria disponibile è sparsa per tutto lo heap.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{enumerate}
-\end_layout
-
-\end_inset
-
-
+ 
 \end_layout
 
 \begin_layout Enumerate
@@ -3511,7 +3452,7 @@ heap
  blocchi di dimensione fissa.
  Quando viene richiesta della memoria, il primo elemento libero viene rimosso
  dalla lista e restituito al richiedente, mentre il puntatore viene spostato
- sul bloccosucessivo.
+ sul blocco sucessivo.
  Alla deallocazione il blocco viene reinserito nella lista.
  
 \begin_inset ERT
@@ -3576,6 +3517,78 @@ status open
 
 \backslash
 end{itemize}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Questi due tipo di gestione dello 
+\series bold
+heap
+\series default
+ sono soggetti entrambi a 
+\series bold
+due
+\series default
+ tipi di 
+\series bold
+frammentazione:
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+
+\series bold
+ interna
+\series default
+, ovvero il blocco di memoria che viene dato alla funzione (e/o variabile....)
+ è leggermente più grande di quello richiesto (la differenza di memoria
+ è sprecata)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+
+\series bold
+esterna
+\series default
+, ovvero non è possibile trovare 
+\begin_inset Formula $\mathit{n}$
+\end_inset
+
+ byte contigui da restituire al programma anche se in totale sono presenti,
+ la memoria disponibile è sparsa per tutto lo heap.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
 \end_layout
 
 \end_inset
@@ -3722,7 +3735,7 @@ item
 \series bold
 Stop and copy:
 \series default
- Lo heap viene diviso in due parti di uguali dimensione.
+ lo heap viene diviso in due parti di uguale dimensione.
  Solo una delle parti è attiva alla volta.
  Quando la prima parte sta per esaurirsi, viene fatta una visita di tutti
  gli oggetti allocati nella heap e quelli validi vengono copiati nella seconda
@@ -3780,7 +3793,7 @@ item
 
 \end_inset
 
- Causa frammentazione esterna 
+ causa frammentazione esterna 
 \begin_inset ERT
 status open
 
@@ -3793,7 +3806,7 @@ item
 
 \end_inset
 
- Richiede tempo proporzionale alla dimensione dello heap, indipendentemente
+ richiede tempo proporzionale alla dimensione dello heap, indipendentemente
  da quale sia la percentuale di questo sia effettivamente utilizzata 
 \begin_inset ERT
 status open
@@ -3807,7 +3820,7 @@ item
 
 \end_inset
 
- Le posizioni degli oggetti deallocati vengono spesso riciclate, cos' facendo
+ le posizioni degli oggetti deallocati vengono spesso riciclate, così facendo
  gli oggetti vecchi si trovano vicino a quelli nuovi.
  Ciò potrebbe rappresentare un problema per la cache
 \begin_inset ERT
@@ -3878,10 +3891,22 @@ run-time
 \series default
  per questo non è possibile definire la memoria usata prima dell'esecuzione,
  ciò non permette la ricorsione con un allocazione statica.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
 \end_layout
 
-\begin_layout Standard
-La 
+\end_inset
+
+ La 
 \series bold
 allocazione statica
 \series default
@@ -3919,7 +3944,7 @@ item
 
  è possibile che qualche sottoclasse smetta di funzionare correttamente
  perchè si ha apportato una modifica alla logica della classe sulla quale
- si basavano le classi figli 
+ si basavano le classi figlie 
 \begin_inset ERT
 status open
 
@@ -3932,12 +3957,12 @@ item
 
 \end_inset
 
- Devono essere ricompilate tutte le classi figlie in quanto devono essere
+ devono essere ricompilate tutte le classi figlie in quanto devono essere
  aggiornati gli 
 \series bold
 offset
 \series default
- ai quale trovare le variabili 
+ ai quali trovare le variabili 
 \begin_inset ERT
 status open
 
@@ -3971,6 +3996,32 @@ status open
 \end_inset
 
  
+\series bold
+Ereditarietà multipla con replicazione:
+\series default
+ 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+B extends A
+\end_layout
+
+\begin_layout Plain Layout
+
+C extends A
+\end_layout
+
+\begin_layout Plain Layout
+
+D extends B,C
+\end_layout
+
+\end_inset
+
+
 \series bold
 vTable:
 \series default
@@ -4049,32 +4100,6 @@ status open
 
 \backslash
 end{itemize}
-\end_layout
-
-\end_inset
-
- 
-\series bold
-Ereditarietà multipla con replicazione:
-\series default
- 
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-B extends A
-\end_layout
-
-\begin_layout Plain Layout
-
-C extends A
-\end_layout
-
-\begin_layout Plain Layout
-
-D extends B,C
 \end_layout
 
 \end_inset
