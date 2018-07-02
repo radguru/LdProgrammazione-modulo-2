@@ -5,6 +5,7 @@
 \usepackage[latin9]{inputenc}
 \usepackage{babel}
 \usepackage{url}
+\usepackage{amsbsy}
 \usepackage{amssymb}
 \usepackage[unicode=true]
  {hyperref}
@@ -43,10 +44,6 @@
 \date{20/06/2018}
 
 \maketitle
-$\mathcal{M_{O_{L_{O}}}}$ denota una macchina ospite che capisce
-il linguaggio $\mathcal{L_{O}}$\\ Le CPU microprogrammate sono CPU
-di cui è possibile aggiornare il firmware. E' presente un microinterprete
-di microistruzioni che esegue il ciclo fetch/decode/load/execute/save.\\
 Quando due diversi nomi denotano lo stesso oggetto si sta verificando
 un effetto chiamato \textbf{aliasing}. \\ Una \textbf{dichiarazione
 }è un meccanismo con il quale si crea un'associazione nell'ambiente.
@@ -65,12 +62,13 @@ si salta in un blocco diverso).
 
 Si denota con il simbolo $\mathcal{M}$\\Una macchina astratta è
 un insieme di algoritmi e strutture dati che permettono di eseguire
-e memorizzare programmi. Questo insieme permette di definire ed implementare
-un linguaggio. \\$\mathcal{M_{L}}$ identifica una macchina astratta
-che capisce ed esegue il linguaggio $\mathcal{L}$. $\mathcal{L}$
-è il linguaggio macchina di $\mathcal{M_{L}}$, un programma non è
-altro che una sequenza di istruzioni in $\mathcal{L}$, $\mathcal{P^{L}}$
-è un programma scritto in linguaggio $\mathcal{L}$.
+e memorizzare programmi attraverso una macchina ospite ($\mathcal{M_{O}}$).
+$\mathcal{M_{O_{L_{O}}}}$ denota una macchina ospite che capisce
+il linguaggio $\mathcal{L_{O}}$ \\$\mathcal{M_{L}}$ identifica
+una macchina astratta che capisce ed esegue il linguaggio $\mathcal{L}$.
+$\mathcal{L}$ è il linguaggio macchina di $\mathcal{M_{L}}$, un
+programma non è altro che una sequenza di istruzioni in $\mathcal{L}$,
+$\mathcal{P^{L}}$ è un programma scritto in linguaggio $\mathcal{L}$.
 
 \subsection*{Macchina astratta ad implementazione compilativa}
 \begin{itemize}
@@ -94,7 +92,7 @@ overflow}. Esiste una variante chiamata \textbf{ricorsione in coda},
 la quale consiste nel chiamare la funzione che ritorna il valore senza
 fare ulteriori computazioni. \\\textbf{ Iterazione:} si realizza
 quando si eseguono più righe di codice al verificarsi di una determinata
-condizione. Presenta due tipi di iterazione: \begin{enumerate}\item
+condizione. Esistono due tipi di iterazione: \begin{enumerate}\item
 \textbf{Iterazione determinata:} il numero di volte che il ciclo è
 eseguito è \textbf{stabilito a priori} e non può essere cambiato \item
 \textbf{Iterazione indeterminata:} il ciclo viene ripetuto \textbf{fino
@@ -110,7 +108,10 @@ a }quando una qualche espressione diventa \textbf{falsa} \end{enumerate} \end{sm
 
 Si denota con il simbolo $\mathcal{I}$.\\ $\mathcal{I}$ capisce
 il programma $\mathcal{L}$ senza aver bisogno di trasformarlo ed
-implementa il ciclo fetch/decode/load/execute/save. \\ $\forall i\epsilon\mathcal{D},\mathcal{I_{L}^{L_{O}}}(\mathcal{P^{L}},i)=\mathcal{P^{L}}(i)$\\
+implementa il ciclo fetch/decode/load/execute/save. (\begin{small}Esistono
+delle CPU microprogrammate delle quali è possibile aggiornare il firmware,
+presentano quindi un microinterprete di microistruzioni che esegue
+il ciclo fetch/decode/load/execute/save.\end{small}). \\ $\forall i\epsilon\mathcal{D},\mathcal{I_{L}^{L_{O}}}(\mathcal{P^{L}},i)=\mathcal{P^{L}}(i)$\\
 Per qualsiasi input $i$, l'interprete applicato a $\mathcal{P^{L}}$
 ed $i$ ritorna lo stesso risultato ritornato da $\mathcal{P^{L}}$
 applicato ad $i$\\ $\mathcal{I_{L}^{L_{O}}}$identifica un interprete
@@ -237,9 +238,9 @@ Ripristino del program counter \item Restituzione dei valori di ritorno
 
 Un comando è un'entità sintattica la cui valutazione non restituisce
 valore ma può comunque avere effetti collaterali. \\Si dice che il
-comando \textbf{void} ritorni un unico valore invece che nessun valore,
-perchè essendo le funzioni dei linguaggi di programmazione derivate
-da funzioni matematiche. Esse non possono non avere un valore, grazie
+comando \textbf{void} ritorni ``un unico valore'' invece che ``nessun
+valore''. Essendo le funzioni dei linguaggi di programmazione derivate
+da funzioni matematiche, esse non possono non avere un valore, grazie
 al fatto che non esistono funzioni matematiche con codominio vuoto,
 quindi tutte le funzioni \textbf{void} ritornano un unico valore (non
 ci è dato sapere quale).
@@ -281,7 +282,7 @@ dotata di un insieme di operazioni che manipolano tali valori.
 \item Un linguaggio di programmazione $\mathcal{L}$ è \textbf{insicuro}
 \textbf{ai tipi} se nel programma $\mathcal{P^{L}}$ è possibile violare
 vincoli di tipo senza che la macchina astratta $\mathcal{M_{L}}$
-se me accorga. 
+se ne accorga. 
 \item Due tipi sono \textbf{strutturalmente equivalenti }quando: \begin{itemize}\item
 un tipo equivale a se stesso \item un \textbf{alias} di un tipo è
 equivalente a quel tipo \item Se due tipi sono costruiti applicando
@@ -361,7 +362,7 @@ nella quale è memorizzato l'array (sempre presente) \item \textbf{Range:
 \textbf{Stride:} la distanza in memoria tra due elementi consecutivi
 \end{itemize} Un array può essere memorizzato in due modi: in \textbf{ordine
 di riga}, l'array viene memorizzato in modo contiguo, e in \textbf{ordine
-di colonna}, in questo caso l'array è memorizzato nei primi/second/terzi...
+di colonna}, in questo caso l'array è memorizzato nei primi/secondi/terzi...
 elementi delle colone. La memorizzazione di un \textbf{array} per
 ordine di \textbf{riga} è più diffusa rispetto a quella per ordine
 di \textbf{colonna} perchè essa rende semplice lo \textbf{slicing}
@@ -390,9 +391,16 @@ meno leggibile.
 
 \section*{Memoria\protect\footnote{Riferimenti e integrazione: \protect\href{file:/Riferimenti/18-DynAlloc.pdf}{pdf\_2010\_Claudio\_Fornaro}}}
 
-La memoria può essere allocata nello stack, nello heap o nel Data
-Segment di un programma, il momento di allocazione può cadere o durante
-il \textbf{run-time }o il \textbf{compile-time. }\\ Esistono 3 tipi
+La memoria può essere allocata nello stack, nello heap o nel \textbf{Data
+Segment}\footnote{In computing, a data segment (often denoted .data) is a portion of
+an object file or the corresponding virtual address space of a program
+that contains initialized static variables, that is, global variables
+and static local variables. The size of this segment is determined
+by the size of the values in the program's source code, and does not
+change at run time.
+
+\url{https://en.wikipedia.org/wiki/Data_segment}} di un programma, il momento di allocazione può cadere o durante il
+\textbf{run-time }o il \textbf{compile-time. }\\ Esistono 3 tipi
 di allocazione della memoria: \begin{itemize}\item Statica \item
 Dinamica mediante stack\item Dinamica mediante heap.\end{itemize}
 
@@ -489,8 +497,8 @@ in an arbitrary sequence instead of strictly in reverse order.\footnote{Descrizi
 \item \textbf{Heap a blocchi variabili: }lo heap in questo caso è costituito
 da un unico blocco di memoria che viene suddiviso, creando blocchi
 di grandezza utile durante il runtime. \begin{itemize}\item(\textbf{Lista
-libera}) Quando viene richieste della memoria si restituisce un blocco
-di dimenzione più appropriata e lo si rimuove dalla lista. Quando
+libera}) Quando viene richiesta della memoria si restituisce un blocco
+di dimensione più appropriata e lo si rimuove dalla lista. Quando
 invece la memoria viene liberata, essa viene riaggiunta alla lista
 e fusa con i blocchi liberi adiacenti in modo da formare un unico
 blocco di memoria libera. \item (\textbf{Compattazione della memoria
@@ -507,21 +515,22 @@ fit }consiste nel assegnare una soglia $\mathit{s}$ alla dimensione
 $\mathit{d}$ del blocco richiesto, restituendo il primo blocco che
 ha dimensione compresa tra $\mathit{d}$ e $\mathit{d+s}$\end{itemize} 
 \item \textbf{Heap a blocchi di dimensione fissa:} lo \textbf{heap} è costituito
-da una lista di $\mathrm{n}$ blocchi di dimensione fissa. Quando
-viene richiesta della memoria, il primo elemento libero viene rimosso
-dalla lista e restituito al richiedente, mentre il puntatore viene
-spostato sul blocco sucessivo. Alla deallocazione il blocco viene
-reinserito nella lista. \begin{itemize}\item (\textbf{Buddy system})
-Il \textbf{buddy system }suddivide i blocchi in potenze di 2, quando
-viene richiesto un blocco di dimensione $\mathit{n}$ si cerca il
-più piccolo blocco libero tale che $2^{k}\geqslant\mathit{n}$ \item(\textbf{Heap
-di Fibonacci}) In questo caso la suddivisione è uguale al \textbf{buddy
-system} ma la dimensione dei blocchi allocabili segue la sequenza
-di Fibonacci e quindi crescono di dimensione più lentamente.\end{itemize} 
+da una lista di $\mathrm{\boldsymbol{n}}$ blocchi di dimensione fissa.
+Quando viene richiesta della memoria, il primo elemento libero viene
+rimosso dalla lista e restituito al richiedente, mentre il puntatore
+viene spostato sul blocco sucessivo. Alla deallocazione il blocco
+viene reinserito nella lista. \begin{itemize}\item (\textbf{Buddy
+system}) Il \textbf{buddy system }suddivide i blocchi in potenze di
+2, quando viene richiesto un blocco di dimensione $\mathit{n}$ si
+cerca il più piccolo blocco libero tale che $2^{k}\geqslant\mathit{n}$
+\item(\textbf{Heap di Fibonacci}) In questo caso la suddivisione
+è uguale al \textbf{buddy system} ma la dimensione dei blocchi allocabili
+segue la sequenza di Fibonacci e quindi crescono di dimensione più
+lentamente.\end{itemize} 
 \end{enumerate}
 Questi due tipi di gestione dello \textbf{heap} (blocchi variabili
-o a dimensione fissa) possono essere entrambi soggetti a \textbf{due}
-tipi di \textbf{frammentazione:}\begin{enumerate}\item\textbf{interna},
+o a dimensione fissa) possono essere soggetti a \textbf{due} tipi
+di \textbf{frammentazione:}\begin{enumerate}\item\textbf{interna},
 ovvero il blocco di memoria che viene dato alla funzione (e/o variabile....)
 è leggermente più grande di quello richiesto (la differenza di memoria
 è sprecata)\item\textbf{esterna}, ovvero non è possibile trovare
@@ -552,7 +561,7 @@ grado di rimuovere strutture circolari ($A$ punta $B$ e $B$ punta
 $A$) \item \textbf{Stop and copy:} lo heap viene diviso in due parti
 di uguale dimensione. Solo una delle parti è attiva alla volta, quando
 la prima parte sta per esaurirsi, viene fatta una visita di tutti
-gli oggetti allocati nella heap e quelli validi vengono copiati nella
+gli oggetti allocati nello heap e quelli validi vengono copiati nella
 seconda parte \item \textbf{Mark and sweep:} si attraversa l'albero
 composto da tutti gli oggetti memorizzati nello heap, marcando quelli
 in uso. Una volta fatto, vengono liberati tutti i blochhi non marcati.

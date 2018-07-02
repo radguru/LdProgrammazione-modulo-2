@@ -91,46 +91,7 @@ Gurpreet S.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\mathcal{M_{O_{L_{O}}}}$
-\end_inset
-
- denota una macchina ospite che capisce il linguaggio 
-\begin_inset Formula $\mathcal{L_{O}}$
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
- Le CPU microprogrammate sono CPU di cui è possibile aggiornare il firmware.
- E' presente un microinterprete di microistruzioni che esegue il ciclo fetch/dec
-ode/load/execute/save.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
- Quando due diversi nomi denotano lo stesso oggetto si sta verificando un
+Quando due diversi nomi denotano lo stesso oggetto si sta verificando un
  effetto chiamato 
 \series bold
 aliasing
@@ -318,8 +279,19 @@ status open
 \end_inset
 
 Una macchina astratta è un insieme di algoritmi e strutture dati che permettono
- di eseguire e memorizzare programmi.
- Questo insieme permette di definire ed implementare un linguaggio.
+ di eseguire e memorizzare programmi attraverso una macchina ospite (
+\begin_inset Formula $\mathcal{M_{O}}$
+\end_inset
+
+).
+ 
+\begin_inset Formula $\mathcal{M_{O_{L_{O}}}}$
+\end_inset
+
+ denota una macchina ospite che capisce il linguaggio 
+\begin_inset Formula $\mathcal{L_{O}}$
+\end_inset
+
  
 \begin_inset ERT
 status open
@@ -570,7 +542,7 @@ status open
 \series default
  si realizza quando si eseguono più righe di codice al verificarsi di una
  determinata condizione.
- Presenta due tipi di iterazione: 
+ Esistono due tipi di iterazione: 
 \begin_inset ERT
 status open
 
@@ -709,6 +681,35 @@ status open
 
  senza aver bisogno di trasformarlo ed implementa il ciclo fetch/decode/load/exe
 cute/save.
+ (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{small}
+\end_layout
+
+\end_inset
+
+Esistono delle CPU microprogrammate delle quali è possibile aggiornare il
+ firmware, presentano quindi un microinterprete di microistruzioni che esegue
+ il ciclo fetch/decode/load/execute/save.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{small}
+\end_layout
+
+\end_inset
+
+).
  
 \begin_inset ERT
 status open
@@ -1685,10 +1686,27 @@ Si dice che il comando
 \series bold
 void
 \series default
- ritorni un unico valore invece che nessun valore, perchè essendo le funzioni
- dei linguaggi di programmazione derivate da funzioni matematiche.
- Esse non possono non avere un valore, grazie al fatto che non esistono
- funzioni matematiche con codominio vuoto, quindi tutte le funzioni 
+ ritorni 
+\begin_inset Quotes eld
+\end_inset
+
+un unico valore
+\begin_inset Quotes erd
+\end_inset
+
+ invece che 
+\begin_inset Quotes eld
+\end_inset
+
+nessun valore
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Essendo le funzioni dei linguaggi di programmazione derivate da funzioni
+ matematiche, esse non possono non avere un valore, grazie al fatto che
+ non esistono funzioni matematiche con codominio vuoto, quindi tutte le
+ funzioni 
 \series bold
 void
 \series default
@@ -1966,7 +1984,7 @@ ai tipi
 \begin_inset Formula $\mathcal{M_{L}}$
 \end_inset
 
- se me accorga.
+ se ne accorga.
  
 \end_layout
 
@@ -2531,7 +2549,7 @@ ordine di riga
 \series bold
 ordine di colonna
 \series default
-, in questo caso l'array è memorizzato nei primi/second/terzi...
+, in questo caso l'array è memorizzato nei primi/secondi/terzi...
  elementi delle colone.
  La memorizzazione di un 
 \series bold
@@ -2668,7 +2686,39 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-La memoria può essere allocata nello stack, nello heap o nel Data Segment
+La memoria può essere allocata nello stack, nello heap o nel 
+\series bold
+Data Segment
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+In computing, a data segment (often denoted .data) is a portion of an object
+ file or the corresponding virtual address space of a program that contains
+ initialized static variables, that is, global variables and static local
+ variables.
+ The size of this segment is determined by the size of the values in the
+ program's source code, and does not change at run time.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://en.wikipedia.org/wiki/Data_segment
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\series default
  di un programma, il momento di allocazione può cadere o durante il 
 \series bold
 run-time 
@@ -3261,7 +3311,7 @@ item
 \series bold
 Lista libera
 \series default
-) Quando viene richieste della memoria si restituisce un blocco di dimenzione
+) Quando viene richiesta della memoria si restituisce un blocco di dimensione
  più appropriata e lo si rimuove dalla lista.
  Quando invece la memoria viene liberata, essa viene riaggiunta alla lista
  e fusa con i blocchi liberi adiacenti in modo da formare un unico blocco
@@ -3386,7 +3436,7 @@ Heap a blocchi di dimensione fissa:
 heap
 \series default
  è costituito da una lista di 
-\begin_inset Formula $\mathrm{n}$
+\begin_inset Formula $\mathrm{\boldsymbol{n}}$
 \end_inset
 
  blocchi di dimensione fissa.
@@ -3469,8 +3519,7 @@ Questi due tipi di gestione dello
 \series bold
 heap
 \series default
- (blocchi variabili o a dimensione fissa) possono essere entrambi soggetti
- a 
+ (blocchi variabili o a dimensione fissa) possono essere soggetti a 
 \series bold
 due
 \series default
@@ -3678,7 +3727,7 @@ Stop and copy:
 \series default
  lo heap viene diviso in due parti di uguale dimensione.
  Solo una delle parti è attiva alla volta, quando la prima parte sta per
- esaurirsi, viene fatta una visita di tutti gli oggetti allocati nella heap
+ esaurirsi, viene fatta una visita di tutti gli oggetti allocati nello heap
  e quelli validi vengono copiati nella seconda parte 
 \begin_inset ERT
 status open
