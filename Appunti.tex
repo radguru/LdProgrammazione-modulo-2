@@ -261,18 +261,8 @@ in essa. \item \textbf{Linguaggi orientati agli oggetti} \\ I linguaggi
 orientati agli oggetti presentato delle variabili con \textbf{modello
 a riferimento}, di conseguenza gli l-value di un'espressione possono
 fare riferimento ad uno spazio nello heap. Ciò permette anche la modifica
-dell'assegnamento di uno spazio di memoria. 
-\begin{lstlisting}
-...
-Oggetto l;
-Oggetto s;
-l = new Oggetto();
-s = l;
-...
-\end{lstlisting}
- \begin{small} s punta allo stesso spazio in memoria di l \end{small}
-\item \textbf{Linguaggi funzionali:} non presentano variabili modificabili.
-\end{itemize}
+dell'assegnamento di uno spazio di memoria. \item \textbf{Linguaggi
+funzionali:} non presentano variabili modificabili. \end{itemize}
 
 \subsubsection*{Tipi (Type)}
 
@@ -535,8 +525,7 @@ ovvero il blocco di memoria che viene dato alla funzione (e/o variabile....)
 è leggermente più grande di quello richiesto (la differenza di memoria
 è sprecata)\item\textbf{esterna}, ovvero non è possibile trovare
 $\mathit{n}$ byte contigui da restituire al programma anche se in
-totale sono presenti, la memoria disponibile è sparsa per tutto lo
-heap.\end{enumerate}
+totale sono presenti, ma sono sparsi per tutto lo heap.\end{enumerate}
 
 \subsection*{Garbage collector}
 
@@ -564,13 +553,13 @@ la prima parte sta per esaurirsi, viene fatta una visita di tutti
 gli oggetti allocati nello heap e quelli validi vengono copiati nella
 seconda parte \item \textbf{Mark and sweep:} si attraversa l'albero
 composto da tutti gli oggetti memorizzati nello heap, marcando quelli
-in uso. Una volta fatto, vengono liberati tutti i blochhi non marcati.
+in uso. Una volta fatto, vengono liberati tutti i blochi non marcati.
 \\ \textbf{Svantaggi:} \begin{itemize}\item causa frammentazione
 esterna \item richiede tempo proporzionale alla dimensione dello
 heap, indipendentemente da quale sia la percentuale effettivamente
 utilizzata \item le posizioni degli oggetti deallocati vengono spesso
 riciclate, così facendo gli oggetti vecchi si trovano vicino a quelli
-nuovi. Ciò potrebbe rappresentare un problema per la cache\end{itemize}\item
+nuovi, creando un possibile problema per la cache\end{itemize}\item
 \textbf{Mark and compact:} funziona allo stesso modo del \textbf{mark
 and sweep}, solo che nella fase di \textbf{sweep} gli oggetti in memoria
 vengono riallocati in maniera che siano tutti contigui \end{itemize}
@@ -600,8 +589,8 @@ le classi figlie in quanto devono essere aggiornati gli \textbf{offset}\footnote
 all'interno di un gruppo di elementi dello stesso tipo. L'unità di
 misura in cui si esprimono gli offset è normalmente il numero di elementi.} ai quali trovare le variabili \end{itemize} \textbf{Ereditarietà
 multipla:} quando si estendono due classi che hanno un metodo con
-la stessa firma, determinare il metodo giusto da chiamare è difficile
-\\ \textbf{Ereditarietà multipla con replicazione:} 
+la stessa firma, determinare il metodo giusto da chiamare è difficile.\\
+\textbf{Ereditarietà multipla con replicazione:} 
 \begin{lstlisting}
 B extends A
 C extends A
@@ -609,7 +598,7 @@ D extends B,C
 \end{lstlisting}
 \textbf{vTable:} in un linguaggio ad oggetti con tipi statici una
 \textbf{vtable} è una struttura dati che tiene traccia di tutti i
-metodi definiti, ridefiniti o ereditati di una classe \\ \textbf{Problemi
+metodi definiti, ridefiniti o ereditati di una classe.\\ \textbf{Problemi
 del ADT che il paradigma orientato agli oggetti risolve:} \begin{itemize}\item
 è più semplice estendere dei tipi di dato già esistenti \item non
 c'è bisogno di andare a ridefinire tutte le operazioni già esistenti

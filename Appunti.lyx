@@ -1855,69 +1855,6 @@ modello a riferimento
  ad uno spazio nello heap.
  Ciò permette anche la modifica dell'assegnamento di uno spazio di memoria.
  
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-...
-\end_layout
-
-\begin_layout Plain Layout
-
-Oggetto l;
-\end_layout
-
-\begin_layout Plain Layout
-
-Oggetto s;
-\end_layout
-
-\begin_layout Plain Layout
-
-l = new Oggetto();
-\end_layout
-
-\begin_layout Plain Layout
-
-s = l;
-\end_layout
-
-\begin_layout Plain Layout
-
-...
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{small}
-\end_layout
-
-\end_inset
-
- s punta allo stesso spazio in memoria di l 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{small}
-\end_layout
-
-\end_inset
-
- 
 \begin_inset ERT
 status open
 
@@ -3570,7 +3507,7 @@ esterna
 \end_inset
 
  byte contigui da restituire al programma anche se in totale sono presenti,
- la memoria disponibile è sparsa per tutto lo heap.
+ ma sono sparsi per tutto lo heap.
 \begin_inset ERT
 status open
 
@@ -3747,7 +3684,7 @@ Mark and sweep:
 \series default
  si attraversa l'albero composto da tutti gli oggetti memorizzati nello
  heap, marcando quelli in uso.
- Una volta fatto, vengono liberati tutti i blochhi non marcati.
+ Una volta fatto, vengono liberati tutti i blochi non marcati.
  
 \begin_inset ERT
 status open
@@ -3810,8 +3747,8 @@ item
 \end_inset
 
  le posizioni degli oggetti deallocati vengono spesso riciclate, così facendo
- gli oggetti vecchi si trovano vicino a quelli nuovi.
- Ciò potrebbe rappresentare un problema per la cache
+ gli oggetti vecchi si trovano vicino a quelli nuovi, creando un possibile
+ problema per la cache
 \begin_inset ERT
 status open
 
@@ -3982,7 +3919,7 @@ end{itemize}
 Ereditarietà multipla:
 \series default
  quando si estendono due classi che hanno un metodo con la stessa firma,
- determinare il metodo giusto da chiamare è difficile 
+ determinare il metodo giusto da chiamare è difficile.
 \begin_inset ERT
 status open
 
@@ -4032,7 +3969,7 @@ vTable:
 vtable
 \series default
  è una struttura dati che tiene traccia di tutti i metodi definiti, ridefiniti
- o ereditati di una classe 
+ o ereditati di una classe.
 \begin_inset ERT
 status open
 
