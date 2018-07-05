@@ -510,7 +510,7 @@ begin{small}
 \series default
  è il processo che si verifica quando una routine richiama se stessa, di
  norma su porzioni di dati di volta in volta sempre più piccole, se è una
- ricorsione incontrollata può incorrere in un 
+ ricorsione incontrollata si può incorrere in un 
 \series bold
 stack overflow
 \series default
@@ -840,17 +840,19 @@ Ambiente globale:
 \end_layout
 
 \begin_layout Standard
-Una funzione produce un 
-\series bold
-effetto collaterale
-\series default
- quando la funzione 
+Quando una funzione 
 \series bold
 produce e/o modifica 
 \series default
 un valore o uno stato al di fuori del proprio 
 \series bold
-scope locale.
+scope locale
+\series default
+ viene definito 
+\series bold
+effetto collaterale
+\series default
+.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1962,6 +1964,32 @@ item
 \series bold
 alias
 \series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{small}
+\end_layout
+
+\end_inset
+
+(variante del nome)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{small}
+\end_layout
+
+\end_inset
+
  di un tipo è equivalente a quel tipo 
 \begin_inset ERT
 status open
@@ -2010,8 +2038,34 @@ unchecked
  quando non viene data la possibilità al compilatore di verificare se il
  
 \series bold
-cast
+cast 
 \series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{small}
+\end_layout
+
+\end_inset
+
+(conversione da un tipo ad un'altro)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{small}
+\end_layout
+
+\end_inset
+
  è corretto.
 \end_layout
 
@@ -2504,7 +2558,214 @@ colonna
 \series bold
 slicing
 \series default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Suddivisione di un 
+\series bold
+array
+\series default
+ in grandezze determinate
+\end_layout
+
+\end_inset
+
  dell'array.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Si possono calcolare gli indirizzi di memoria dei valori di un array in
+ base a quale metodo è stato usato per memorizzare l'array: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Colonna:
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ int a[A][B] è un array multidimensionale di interi (si assuma che la dimensione
+ di un intero sia D byte) con a[0][0] che ha indirizzo INDIRIZZO_BASE, qual
+ è l’indirizzo di a[Y][Z]?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Posizione in memoria = INDIRIZZO_BASE + (D*A*Z) + (D*Y)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ int a[A][B][C] è un array multidimensionale di interi (si assuma che la
+ dimensione di un intero sia D byte) con a[0][0] che ha indirizzo INDIRIZZO_BASE
+, qual è l’indirizzo di a[X][Y][Z]? 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Posizione in memoria = INDIRIZZO_BASE + (D*A*B*Z) + (D*A*Y) + (D*X);
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Righe:
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ int a[A][B] è un array multidimensionale di interi (si assuma che la dimensione
+ di un intero sia D byte) con a[0][0] che ha indirizzo INDIRIZZO_BASE, qual
+ è l’indirizzo di a[Y][Z]?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Posizione in memoria = INDIRIZZO_BASE + (D*B*Y) + (D*Z);
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ Se gli array sono memorizzati per righe ed int a[A][B][C] è un array multidimen
+sionale di interi (si assuma che la dimensione di un intero sia D byte)
+ con a[0][0] che ha indirizzo INDIRIZZO_BASE, qual è l’indirizzo di a[X][Y][Z]?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Posizione in memoria = INDIRIZZO_BASE + (D*B*C*X) + (D*C*Y) + (D*Z);
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -3295,66 +3556,6 @@ status open
 
 
 \backslash
-item
-\end_layout
-
-\end_inset
-
-(
-\series bold
-Best fit
-\series default
-) La strategia 
-\series bold
-best fit
-\series default
- consiste nello scorrere tutta la lista alla ricerca del blocco che combacia
- meglio con la dimensione del blocco richiesto
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
-(
-\series bold
-First fit
-\series default
-) La strategia 
-\series bold
-first fit 
-\series default
-consiste nel assegnare una soglia 
-\begin_inset Formula $\mathit{s}$
-\end_inset
-
- alla dimensione 
-\begin_inset Formula $\mathit{d}$
-\end_inset
-
- del blocco richiesto, restituendo il primo blocco che ha dimensione compresa
- tra 
-\begin_inset Formula $\mathit{d}$
-\end_inset
-
- e 
-\begin_inset Formula $\mathit{d+s}$
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
 end{itemize}
 \end_layout
 
@@ -3448,7 +3649,83 @@ end{itemize}
 
 \end_inset
 
+ Questo tipo di heap ha due modalità per restituire il blocco di memoria
+ richiesto: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+(
+\series bold
+Best fit
+\series default
+) La strategia 
+\series bold
+best fit
+\series default
+ consiste nello scorrere tutta la lista alla ricerca del blocco che combacia
+ meglio con la dimensione del blocco richiesto
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
+\end_layout
+
+\end_inset
+
+(
+\series bold
+First fit
+\series default
+) La strategia 
+\series bold
+first fit 
+\series default
+consiste nel assegnare una soglia 
+\begin_inset Formula $\mathit{s}$
+\end_inset
+
+ alla dimensione 
+\begin_inset Formula $\mathit{d}$
+\end_inset
+
+ del blocco richiesto, restituendo il primo blocco che ha dimensione compresa
+ tra 
+\begin_inset Formula $\mathit{d}$
+\end_inset
+
+ e 
+\begin_inset Formula $\mathit{d+s}$
+\end_inset
+
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3919,7 +4196,7 @@ end{itemize}
 Ereditarietà multipla:
 \series default
  quando si estendono due classi che hanno un metodo con la stessa firma,
- determinare il metodo giusto da chiamare è difficile 
+ determinare il metodo giusto da chiamare è difficile.
 \begin_inset ERT
 status open
 
@@ -3969,7 +4246,7 @@ vTable:
 vtable
 \series default
  è una struttura dati che tiene traccia di tutti i metodi definiti, ridefiniti
- o ereditati di una classe 
+ o ereditati di una classe.
 \begin_inset ERT
 status open
 

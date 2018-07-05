@@ -87,12 +87,12 @@ linguaggio $\mathcal{L}$ scritto in linguaggio $\mathcal{L_{A}}$.
 modo da farla diventare una iterazione. \\ \begin{small}\textbf{
 Ricorsione:} è il processo che si verifica quando una routine richiama
 se stessa, di norma su porzioni di dati di volta in volta sempre più
-piccole, se è una ricorsione incontrollata può incorrere in un \textbf{stack
-overflow}. Esiste una variante chiamata \textbf{ricorsione in coda},
-la quale consiste nel chiamare la funzione che ritorna il valore senza
-fare ulteriori computazioni. \\\textbf{ Iterazione:} si realizza
-quando si eseguono più righe di codice al verificarsi di una determinata
-condizione. Esistono due tipi di iterazione: \begin{enumerate}\item
+piccole, se è una ricorsione incontrollata si può incorrere in un
+\textbf{stack overflow}. Esiste una variante chiamata \textbf{ricorsione
+in coda}, la quale consiste nel chiamare la funzione che ritorna il
+valore senza fare ulteriori computazioni. \\\textbf{ Iterazione:}
+si realizza quando si eseguono più righe di codice al verificarsi
+di una determinata condizione. Esistono due tipi di iterazione: \begin{enumerate}\item
 \textbf{Iterazione determinata:} il numero di volte che il ciclo è
 eseguito è \textbf{stabilito a priori} e non può essere cambiato \item
 \textbf{Iterazione indeterminata:} il ciclo viene ripetuto \textbf{fino
@@ -130,9 +130,9 @@ denotabili esistenti ad uno specifico punto dell'esecuzione del programma.
 \item \textbf{Ambiente non locale:} associazioni ereditate da altri blocchi
 \item \textbf{Ambiente globale:} associazioni comuni a tutti i blocchi
 \end{itemize}
-Una funzione produce un \textbf{effetto collaterale} quando la funzione
-\textbf{produce e/o modifica }un valore o uno stato al di fuori del
-proprio \textbf{scope locale.}
+Quando una funzione \textbf{produce e/o modifica }un valore o uno
+stato al di fuori del proprio \textbf{scope locale} viene definito
+\textbf{effetto collaterale}.
 
 \subsubsection*{Blocco}
 
@@ -274,15 +274,16 @@ dotata di un insieme di operazioni che manipolano tali valori.
 vincoli di tipo senza che la macchina astratta $\mathcal{M_{L}}$
 se ne accorga. 
 \item Due tipi sono \textbf{strutturalmente equivalenti }quando: \begin{itemize}\item
-un tipo equivale a se stesso \item un \textbf{alias} di un tipo è
-equivalente a quel tipo \item Se due tipi sono costruiti applicando
-lo stesso costruttore di tipo a tipi equivalenti, allora essi sono
-equivalenti. \end{itemize}
+un tipo equivale a se stesso \item un \textbf{alias} \begin{small}(variante
+del nome)\end{small} di un tipo è equivalente a quel tipo \item
+Se due tipi sono costruiti applicando lo stesso costruttore di tipo
+a tipi equivalenti, allora essi sono equivalenti. \end{itemize}
 \item Due tipi sono \textbf{equivalenti per nome} solo se hanno lo stesso
 nome (un tipo è equivalente per nome solo a se stesso)
 \item Le conversioni tra due tipi vengono dette \textbf{unchecked} quando
-non viene data la possibilità al compilatore di verificare se il \textbf{cast}
-è corretto.
+non viene data la possibilità al compilatore di verificare se il \textbf{cast
+}\begin{small}(conversione da un tipo ad un'altro)\end{small} è
+corretto.
 \item Il tipo di dato che fa parte di tipi di dato in cui è definito un
 ordine specifico è detto \textbf{ordinale}.
 \item Due tipi sono \textbf{compatibili} quando il tipo1 è ammesso in qualsiasi
@@ -355,8 +356,28 @@ di riga}, l'array viene memorizzato in modo contiguo, e in \textbf{ordine
 di colonna}, in questo caso l'array è memorizzato nei primi/secondi/terzi...
 elementi delle colone. La memorizzazione di un \textbf{array} per
 ordine di \textbf{riga} è più diffusa rispetto a quella per ordine
-di \textbf{colonna} perchè essa rende semplice lo \textbf{slicing}
-dell'array.
+di \textbf{colonna} perchè essa rende semplice lo \textbf{slicing}\footnote{Suddivisione di un \textbf{array} in grandezze determinate}
+dell'array.\\ Si possono calcolare gli indirizzi di memoria dei valori
+di un array in base a quale metodo è stato usato per memorizzare l'array:
+\begin{itemize}\item \textbf{Colonna:} \begin{enumerate}\item int
+a{[}A{]}{[}B{]} è un array multidimensionale di interi (si assuma
+che la dimensione di un intero sia D byte) con a{[}0{]}{[}0{]} che
+ha indirizzo INDIRIZZO\_BASE, qual è l\textquoteright indirizzo di
+a{[}Y{]}{[}Z{]}?\\Posizione in memoria = INDIRIZZO\_BASE + (D{*}A{*}Z)
++ (D{*}Y)\item int a{[}A{]}{[}B{]}{[}C{]} è un array multidimensionale
+di interi (si assuma che la dimensione di un intero sia D byte) con
+a{[}0{]}{[}0{]} che ha indirizzo INDIRIZZO\_BASE, qual è l\textquoteright indirizzo
+di a{[}X{]}{[}Y{]}{[}Z{]}? \\Posizione in memoria = INDIRIZZO\_BASE
++ (D{*}A{*}B{*}Z) + (D{*}A{*}Y) + (D{*}X);\end{enumerate}\item \textbf{Righe:}
+\begin{enumerate}\item int a{[}A{]}{[}B{]} è un array multidimensionale
+di interi (si assuma che la dimensione di un intero sia D byte) con
+a{[}0{]}{[}0{]} che ha indirizzo INDIRIZZO\_BASE, qual è l\textquoteright indirizzo
+di a{[}Y{]}{[}Z{]}?\\Posizione in memoria = INDIRIZZO\_BASE + (D{*}B{*}Y)
++ (D{*}Z);\item Se gli array sono memorizzati per righe ed int a{[}A{]}{[}B{]}{[}C{]}
+è un array multidimensionale di interi (si assuma che la dimensione
+di un intero sia D byte) con a{[}0{]}{[}0{]} che ha indirizzo INDIRIZZO\_BASE,
+qual è l\textquoteright indirizzo di a{[}X{]}{[}Y{]}{[}Z{]}?\\Posizione
+in memoria = INDIRIZZO\_BASE + (D{*}B{*}C{*}X) + (D{*}C{*}Y) + (D{*}Z);\end{enumerate}\end{itemize}
 
 \subsubsection*{Scope statico e dinamico}
 
@@ -497,13 +518,7 @@ continuando dalla allocazione precedente senza liberare lo spazio
 prima (anche in caso di deallocazione dell'oggetto), ma quando finisce
 la memoria di heap libera, questo metodo ``\textbf{compatta}'' i
 blocchi allocati, creando una zona continua di spazio. Alla fine aggiorna
-il puntatore dello heap allo spazio così liberato. \item(\textbf{Best
-fit}) La strategia \textbf{best fit} consiste nello scorrere tutta
-la lista alla ricerca del blocco che combacia meglio con la dimensione
-del blocco richiesto\item(\textbf{First fit}) La strategia \textbf{first
-fit }consiste nel assegnare una soglia $\mathit{s}$ alla dimensione
-$\mathit{d}$ del blocco richiesto, restituendo il primo blocco che
-ha dimensione compresa tra $\mathit{d}$ e $\mathit{d+s}$\end{itemize} 
+il puntatore dello heap allo spazio così liberato. \end{itemize} 
 \item \textbf{Heap a blocchi di dimensione fissa:} lo \textbf{heap} è costituito
 da una lista di $\mathrm{\boldsymbol{n}}$ blocchi di dimensione fissa.
 Quando viene richiesta della memoria, il primo elemento libero viene
@@ -516,7 +531,14 @@ cerca il più piccolo blocco libero tale che $2^{k}\geqslant\mathit{n}$
 \item(\textbf{Heap di Fibonacci}) In questo caso la suddivisione
 è uguale al \textbf{buddy system} ma la dimensione dei blocchi allocabili
 segue la sequenza di Fibonacci e quindi crescono di dimensione più
-lentamente.\end{itemize} 
+lentamente.\end{itemize} Questo tipo di heap ha due modalità per
+restituire il blocco di memoria richiesto: \begin{itemize}\item(\textbf{Best
+fit}) La strategia \textbf{best fit} consiste nello scorrere tutta
+la lista alla ricerca del blocco che combacia meglio con la dimensione
+del blocco richiesto\item(\textbf{First fit}) La strategia \textbf{first
+fit }consiste nel assegnare una soglia $\mathit{s}$ alla dimensione
+$\mathit{d}$ del blocco richiesto, restituendo il primo blocco che
+ha dimensione compresa tra $\mathit{d}$ e $\mathit{d+s}$ \end{itemize}
 \end{enumerate}
 Questi due tipi di gestione dello \textbf{heap} (blocchi variabili
 o a dimensione fissa) possono essere soggetti a \textbf{due} tipi
@@ -588,9 +610,12 @@ si basavano le classi figlie \item devono essere ricompilate tutte
 le classi figlie in quanto devono essere aggiornati gli \textbf{offset}\footnote{offset è un numero intero che indica la distanza tra due elementi
 all'interno di un gruppo di elementi dello stesso tipo. L'unità di
 misura in cui si esprimono gli offset è normalmente il numero di elementi.} ai quali trovare le variabili \end{itemize} \textbf{Ereditarietà
-multipla:} quando si estendono due classi che hanno un metodo con
-la stessa firma, determinare il metodo giusto da chiamare è difficile.\\
-\textbf{Ereditarietà multipla con replicazione:} 
+multipla:} una classe può ereditare funzionalità e carattereistiche
+da più di una classe base. Presenta però un problema, è molto difficile
+determinare il metodo giusto da chiamare quando si estendono due classi
+che hanno un metodo con la stessa firma.\\ \textbf{Ereditarietà multipla
+con replicazione: }una classe eredita da classi che hanno la stessa
+classe base 
 \begin{lstlisting}
 B extends A
 C extends A
@@ -603,10 +628,7 @@ del ADT che il paradigma orientato agli oggetti risolve:} \begin{itemize}\item
 è più semplice estendere dei tipi di dato già esistenti \item non
 c'è bisogno di andare a ridefinire tutte le operazioni già esistenti
 sui tipi di dati derivati \item possibilità di avere array con tipi
-di dato diversi ma compatibili \end{itemize} \textbf{Shadowing:}
-definizione di una variabile di istanza che con lo stesso tipo di
-una variabile della classe padre. Questo fa si che la variabile del
-padre non sia direttamente accessibile alla classe figlio.
+di dato diversi ma compatibili \end{itemize} 
 \begin{thebibliography}{1}
 \bibitem{key-1}Appunti basati sul lavoro di Slavetto: \url{https://slavetto.github.io/primo-anno/}
 codice git: \url{https://github.com/slavetto/slavetto.github.io}
