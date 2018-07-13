@@ -91,89 +91,7 @@ Gurpreet S.
 \end_layout
 
 \begin_layout Standard
-Quando due diversi nomi denotano lo stesso oggetto si sta verificando un
- effetto chiamato 
-\series bold
-aliasing
-\series default
-.
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
- Una 
-\series bold
-dichiarazione 
-\series default
-è un meccanismo con il quale si crea un'associazione nell'ambiente.
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
- Il 
-\series bold
-binding 
-\series default
-è il nome dato alla creazione di un'associazione tra nome ed un oggetto
- denotabile.
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
- Un 
-\series bold
-identificatore 
-\series default
-è una sequenza di caratteri usata per denotare qualcosa.
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
- Il primo 
+Il primo 
 \series bold
 costrutto if 
 \series default
@@ -343,6 +261,33 @@ status open
 Macchina astratta ad implementazione compilativa
 \end_layout
 
+\begin_layout Standard
+La tecnica compilativa si basa sull' idea di tradurre una volta per tutte
+ l'intero programma in un programma funzionalmente equivalente scritto nel
+ linguaggio della macchina ospite.
+ Il compito di eseguire tale traduzione e' eseguito da un programma detto
+ 
+\series bold
+compilatore
+\series default
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Questa implemetazione presenta:
+\end_layout
+
 \begin_layout Itemize
 
 \series bold
@@ -402,7 +347,7 @@ end{itemize}
 \end_layout
 
 \begin_layout Subsubsection*
-Compilatore
+Compilatore 
 \end_layout
 
 \begin_layout Standard
@@ -515,7 +460,22 @@ begin{small}
 stack overflow
 \series default
 .
- Esiste una variante chiamata 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Esiste una variante chiamata 
 \series bold
 ricorsione in coda
 \series default
@@ -610,6 +570,28 @@ end{small}
 
 \begin_layout Subsection*
 Macchina astratta ad implementazione interpretativa
+\end_layout
+
+\begin_layout Standard
+La tecnica interpretativa consiste nel realizzare tutte le componenti della
+ macchina (cioe' tutti gli algoritmi e le strutture dati che li definiscono)
+ mediante programmi e strutture dati del linguaggio della macchina ospite.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Questa implementazione presenta:
 \end_layout
 
 \begin_layout Itemize
@@ -739,7 +721,9 @@ status open
 \backslash
 
 \backslash
-
+ 
+\backslash
+begin{small}
 \end_layout
 
 \end_inset
@@ -771,6 +755,8 @@ status open
 \begin_layout Plain Layout
 
 
+\backslash
+end{small} 
 \backslash
 
 \backslash
@@ -813,6 +799,21 @@ ambiente
 \series default
 è un insieme di associazioni fra nomi ed oggetti denotabili esistenti ad
  uno specifico punto dell'esecuzione del programma.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Esistono tre tipi diversi di ambiente, che definiscono le varie associazioni:
 \end_layout
 
 \begin_layout Itemize
@@ -853,19 +854,109 @@ scope locale
 effetto collaterale
 \series default
 .
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
 \end_layout
 
-\begin_layout Subsubsection*
-Blocco
+\end_inset
+
+ Una 
+\series bold
+dichiarazione 
+\series default
+è un meccanismo con il quale si crea un'associazione nell'ambiente.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+ Il 
+\series bold
+binding 
+\series default
+è il nome dato alla creazione di un'associazione tra nome ed un oggetto
+ denotabile.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Quando due diversi nomi denotano lo stesso oggetto si sta verificando un
+ effetto chiamato 
+\series bold
+aliasing
+\series default
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Un 
+\series bold
+identificatore 
+\series default
+è una sequenza di caratteri usata per denotare qualcosa.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
 Il 
 \series bold
 blocco
 \series default
  è una regione testuale di un programma avente un inizio e una fine, esso
  può contenere dichiarazioni locali alla regione.
+ 
 \end_layout
 
 \begin_layout Subsection*
@@ -1037,8 +1128,8 @@ e/o di
 \series bold
 underflow
 \series default
-, grazie alle operazioni matematiche che come risultato riportano un numero
- troppo grande o troppo piccolo.
+, dovuti alle operazioni matematiche che come risultato presentano un numero
+ non codificabile in binario nei bit a disposizione della macchina.
  
 \begin_inset ERT
 status open
@@ -2832,9 +2923,20 @@ display
 catena statica
 \series default
  risparmiando in questo modo le risorse della macchina).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
 Scope dinamico
 \begin_inset ERT
 status open
@@ -2925,77 +3027,6 @@ o il
 \series bold
 compile-time.
  
-\series default
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\backslash
-
-\end_layout
-
-\end_inset
-
- Esistono 3 tipi di allocazione della memoria: 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{itemize}
-\backslash
-item
-\end_layout
-
-\end_inset
-
- Statica 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
- Dinamica mediante stack
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-item
-\end_layout
-
-\end_inset
-
- Dinamica mediante heap.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{itemize}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection*
@@ -3480,7 +3511,11 @@ end{quote}
 
 \end_inset
 
-
+Esistono due modi per gestire lo 
+\series bold
+heap
+\series default
+:
 \end_layout
 
 \begin_layout Enumerate
@@ -4063,8 +4098,8 @@ mark and sweep
 \series bold
 sweep
 \series default
- gli oggetti in memoria vengono riallocati in maniera che siano tutti contigui
- 
+ gli oggetti in memoria vengono riallocati in maniera che siano tutti contigui,
+ in questo modo viene superato il problema delle posizioni riciclate
 \begin_inset ERT
 status open
 
@@ -4195,8 +4230,11 @@ end{itemize}
 \series bold
 Ereditarietà multipla:
 \series default
- quando si estendono due classi che hanno un metodo con la stessa firma,
- determinare il metodo giusto da chiamare è difficile.
+ una classe può ereditare funzionalità e carattereistiche da più di una
+ classe base.
+ Presenta però un problema, è molto difficile determinare il metodo giusto
+ da chiamare quando si estendono due classi che hanno un metodo con la stessa
+ firma.
 \begin_inset ERT
 status open
 
@@ -4213,9 +4251,9 @@ status open
 
  
 \series bold
-Ereditarietà multipla con replicazione:
+Ereditarietà multipla con replicazione: 
 \series default
- 
+una classe eredita da classi che hanno la stessa classe base 
 \begin_inset listings
 inline false
 status open
@@ -4321,13 +4359,6 @@ end{itemize}
 \end_inset
 
  
-\series bold
-Shadowing:
-\series default
- definizione di una variabile di istanza che con lo stesso tipo di una variabile
- della classe padre.
- Questo fa si che la variabile del padre non sia direttamente accessibile
- alla classe figlio.
 \end_layout
 
 \begin_layout Bibliography
@@ -4417,6 +4448,29 @@ LatexCommand href
 target "/Riferimenti/Linguaggi_Sintassi_e_Semantica.pdf"
 type "file:"
 literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-5"
+literal "false"
+
+\end_inset
+
+ Integrazione con: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.dmi.unict.it/~barba/Architetture.html/MATERIALE-IN-RETE/MA/implementazion
+e.htm
+\end_layout
 
 \end_inset
 

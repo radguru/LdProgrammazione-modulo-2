@@ -44,13 +44,7 @@
 \date{20/06/2018}
 
 \maketitle
-Quando due diversi nomi denotano lo stesso oggetto si sta verificando
-un effetto chiamato \textbf{aliasing}. \\ Una \textbf{dichiarazione
-}è un meccanismo con il quale si crea un'associazione nell'ambiente.
-\\ Il \textbf{binding }è il nome dato alla creazione di un'associazione
-tra nome ed un oggetto denotabile. \\ Un \textbf{identificatore }è
-una sequenza di caratteri usata per denotare qualcosa. \\ Il primo
-\textbf{costrutto if }è stato introdotto nel linguaggio \textbf{Algol
+Il primo \textbf{costrutto if }è stato introdotto nel linguaggio \textbf{Algol
 60}. \\\textbf{ Programmazione in the large}: sviluppo di software
 di grandi dimensioni. \\\textbf{ Comando sequenziale}: è un comando
 che indica che due operazioni devono essere eseguite in sequenza ``;''.
@@ -71,13 +65,19 @@ programma non è altro che una sequenza di istruzioni in $\mathcal{L}$,
 $\mathcal{P^{L}}$ è un programma scritto in linguaggio $\mathcal{L}$.
 
 \subsection*{Macchina astratta ad implementazione compilativa}
+
+La tecnica compilativa si basa sull' idea di tradurre una volta per
+tutte l'intero programma in un programma funzionalmente equivalente
+scritto nel linguaggio della macchina ospite. Il compito di eseguire
+tale traduzione e' eseguito da un programma detto \textbf{compilatore}.\\
+Questa implemetazione presenta:
 \begin{itemize}
 \item \textbf{Vantaggi}: implementazione efficiente;
 \item \textbf{Svantaggi}: \begin{itemize}\item non (molto) portabile; \item
 perdita di informazione sulla struttura del programma sorgente. \end{itemize}
 \end{itemize}
 
-\subsubsection*{Compilatore}
+\subsubsection*{Compilatore }
 
 Si denota con il simbolo $\mathcal{C}$ \\ Traduce il programma $\mathcal{L}_{1}$
 in un altro linguaggio $\mathcal{L}_{2}$. \\ $\mathcal{C_{LL_{O}}^{L_{A}}}$identifica
@@ -88,7 +88,7 @@ modo da farla diventare una iterazione. \\ \begin{small}\textbf{
 Ricorsione:} è il processo che si verifica quando una routine richiama
 se stessa, di norma su porzioni di dati di volta in volta sempre più
 piccole, se è una ricorsione incontrollata si può incorrere in un
-\textbf{stack overflow}. Esiste una variante chiamata \textbf{ricorsione
+\textbf{stack overflow}. \\Esiste una variante chiamata \textbf{ricorsione
 in coda}, la quale consiste nel chiamare la funzione che ritorna il
 valore senza fare ulteriori computazioni. \\\textbf{ Iterazione:}
 si realizza quando si eseguono più righe di codice al verificarsi
@@ -99,6 +99,11 @@ eseguito è \textbf{stabilito a priori} e non può essere cambiato \item
 a }quando una qualche espressione diventa \textbf{falsa} \end{enumerate} \end{small}
 
 \subsection*{Macchina astratta ad implementazione interpretativa}
+
+La tecnica interpretativa consiste nel realizzare tutte le componenti
+della macchina (cioe' tutti gli algoritmi e le strutture dati che
+li definiscono) mediante programmi e strutture dati del linguaggio
+della macchina ospite. \\ Questa implementazione presenta:
 \begin{itemize}
 \item \textbf{Vantaggi:} \begin{itemize}\item flessibile e portabile; \item debugging semplificato.\end{itemize}
 \item \textbf{Svantaggi}: poco efficiente.
@@ -111,19 +116,20 @@ il programma $\mathcal{L}$ senza aver bisogno di trasformarlo ed
 implementa il ciclo fetch/decode/load/execute/save. (\begin{small}Esistono
 delle CPU microprogrammate delle quali è possibile aggiornare il firmware,
 presentano quindi un microinterprete di microistruzioni che esegue
-il ciclo fetch/decode/load/execute/save.\end{small}). \\ $\forall i\epsilon\mathcal{D},\mathcal{I_{L}^{L_{O}}}(\mathcal{P^{L}},i)=\mathcal{P^{L}}(i)$\\
+il ciclo fetch/decode/load/execute/save.\end{small}). \\ $\forall i\epsilon\mathcal{D},\mathcal{I_{L}^{L_{O}}}(\mathcal{P^{L}},i)=\mathcal{P^{L}}(i)$\\ \begin{small}
 Per qualsiasi input $i$, l'interprete applicato a $\mathcal{P^{L}}$
 ed $i$ ritorna lo stesso risultato ritornato da $\mathcal{P^{L}}$
-applicato ad $i$\\ $\mathcal{I_{L}^{L_{O}}}$identifica un interprete
-$\mathcal{I}$ del linguaggio $\mathcal{L}$ scritto nel linguaggio
-$\mathcal{L_{O}}$
+applicato ad $i$\end{small} \\ $\mathcal{I_{L}^{L_{O}}}$identifica
+un interprete $\mathcal{I}$ del linguaggio $\mathcal{L}$ scritto
+nel linguaggio $\mathcal{L_{O}}$
 
 \section*{Espressione \& Comandi}
 
 \subsection*{Ambiente e sottodivisioni}
 
 Un \textbf{ambiente }è un insieme di associazioni fra nomi ed oggetti
-denotabili esistenti ad uno specifico punto dell'esecuzione del programma.
+denotabili esistenti ad uno specifico punto dell'esecuzione del programma.\\Esistono
+tre tipi diversi di ambiente, che definiscono le varie associazioni:
 \begin{itemize}
 \item \textbf{Ambiente locale:} insieme delle associazioni create nel blocco
 (inclusi i parametri)
@@ -132,12 +138,14 @@ denotabili esistenti ad uno specifico punto dell'esecuzione del programma.
 \end{itemize}
 Quando una funzione \textbf{produce e/o modifica }un valore o uno
 stato al di fuori del proprio \textbf{scope locale} viene definito
-\textbf{effetto collaterale}.
-
-\subsubsection*{Blocco}
-
-Il \textbf{blocco} è una regione testuale di un programma avente un
-inizio e una fine, esso può contenere dichiarazioni locali alla regione.
+\textbf{effetto collaterale}.\\ Una \textbf{dichiarazione }è un meccanismo
+con il quale si crea un'associazione nell'ambiente. \\ Il \textbf{binding
+}è il nome dato alla creazione di un'associazione tra nome ed un oggetto
+denotabile. \\ Quando due diversi nomi denotano lo stesso oggetto
+si sta verificando un effetto chiamato \textbf{aliasing}. \\Un \textbf{identificatore
+}è una sequenza di caratteri usata per denotare qualcosa. \\Il \textbf{blocco}
+è una regione testuale di un programma avente un inizio e una fine,
+esso può contenere dichiarazioni locali alla regione. 
 
 \subsection*{Espressione }
 
@@ -157,11 +165,11 @@ l'espressione viene valutata appena viene legata ad una variabile.
 sintattico}, cioè un albero che rappresenta la struttura sintattica
 di una stringa in accordo a determinate forme grammaticali. \footnote{Per approfondimenti sull'albero sintattico: \href{file:/Riferimenti/Linguaggi_Sintassi_e_Semantica.pdf}{Sintassi e Semantica - Alfonso Miola},
 slide 27 in poi}\\ Le espressioni sono le principali cause di \textbf{overflow }e/o
-di \textbf{underflow}, grazie alle operazioni matematiche che come
-risultato riportano un numero troppo grande o troppo piccolo. \\\textbf{
-Chiusura:} una coppia di ambiente e espressione in cui questa dev'essere
-valutata. L'ambiente deve comprendere (almeno) tutte le variabili
-libere dell'espressione.
+di \textbf{underflow}, dovuti alle operazioni matematiche che come
+risultato presentano un numero non codificabile in binario nei bit
+a disposizione della macchina. \\\textbf{ Chiusura:} una coppia di
+ambiente e espressione in cui questa dev'essere valutata. L'ambiente
+deve comprendere (almeno) tutte le variabili libere dell'espressione.
 
 \subsubsection*{Passaggio di parametri}
 
@@ -393,12 +401,10 @@ blocco di annidamento; ciò serve a ridurre il costo di scansione della
 catena statica (quando ci si riferisce ad un oggetto non locale, il
 suo puntatore viene reperito dal vettore, così non serve cercare in
 tutta la \textbf{catena statica} risparmiando in questo modo le risorse
-della macchina).
-
-Scope dinamico\\ Lo \textbf{scope dinamico,} per risolvere una variabile
-cerca il più recente legame ancora attivo stabilito a tempo di esecuzione,
-questo scope è più semplice da implementare ma è meno efficiente e
-meno leggibile.
+della macchina).\\Scope dinamico\\ Lo \textbf{scope dinamico,} per
+risolvere una variabile cerca il più recente legame ancora attivo
+stabilito a tempo di esecuzione, questo scope è più semplice da implementare
+ma è meno efficiente e meno leggibile.
 
 \section*{Memoria\protect\footnote{Riferimenti e integrazione: \protect\href{file:/Riferimenti/18-DynAlloc.pdf}{pdf\_2010\_Claudio\_Fornaro}}}
 
@@ -411,9 +417,7 @@ by the size of the values in the program's source code, and does not
 change at run time.
 
 \url{https://en.wikipedia.org/wiki/Data_segment}} di un programma, il momento di allocazione può cadere o durante il
-\textbf{run-time }o il \textbf{compile-time. }\\ Esistono 3 tipi
-di allocazione della memoria: \begin{itemize}\item Statica \item
-Dinamica mediante stack\item Dinamica mediante heap.\end{itemize}
+\textbf{run-time }o il \textbf{compile-time. }
 
 \subsection*{Allocazione di memoria}
 
@@ -503,7 +507,8 @@ independently of the scope of a function. And although all memory
 in a computer is linear at some level, a heap is less linear in the
 way it\textquoteright s managed because it maintains pointers to different
 areas of memory making it easier to allocate and free blocks of memory
-in an arbitrary sequence instead of strictly in reverse order.\footnote{Descrizione presa da: \href{https://www.quora.com/What-is-the-difference-between-the-stack-and-the-heap}{What is the difference between the stack and the heap?}}\end{quote}
+in an arbitrary sequence instead of strictly in reverse order.\footnote{Descrizione presa da: \href{https://www.quora.com/What-is-the-difference-between-the-stack-and-the-heap}{What is the difference between the stack and the heap?}}\end{quote}Esistono
+due modi per gestire lo \textbf{heap}:
 \begin{enumerate}
 \item \textbf{Heap a blocchi variabili: }lo heap in questo caso è costituito
 da un unico blocco di memoria che viene suddiviso, creando blocchi
@@ -584,7 +589,9 @@ riciclate, così facendo gli oggetti vecchi si trovano vicino a quelli
 nuovi, creando un possibile problema per la cache\end{itemize}\item
 \textbf{Mark and compact:} funziona allo stesso modo del \textbf{mark
 and sweep}, solo che nella fase di \textbf{sweep} gli oggetti in memoria
-vengono riallocati in maniera che siano tutti contigui \end{itemize}
+vengono riallocati in maniera che siano tutti contigui, in questo
+modo viene superato il problema delle posizioni riciclate del \textbf{mark
+and sweep}\end{itemize}
 
 \subsection*{Info generali (stack-heap-allocazione dinamica-allocazione statica)}
 
@@ -640,6 +647,8 @@ codice git: \url{https://github.com/slavetto/slavetto.github.io}
 
 \bibitem{key-4} Linguaggi Sentassi e Semantica di Alfonso Miola:
 \href{file:/Riferimenti/Linguaggi_Sintassi_e_Semantica.pdf}{/Riferimenti/Linguaggi\_Sintassi\_e\_Semantica.pdf}
+
+\bibitem{key-5} Integrazione con: \url{http://www.dmi.unict.it/~barba/Architetture.html/MATERIALE-IN-RETE/MA/implementazione.htm}
 \end{thebibliography}
 
 \end{document}
