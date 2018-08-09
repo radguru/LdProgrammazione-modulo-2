@@ -60,8 +60,8 @@ e memorizzare programmi attraverso una macchina ospite ($\mathcal{M_{O}}$).
 $\mathcal{M_{O_{L_{O}}}}$ denota una macchina ospite che capisce
 il linguaggio $\mathcal{L_{O}}$ \\$\mathcal{M_{L}}$ identifica
 una macchina astratta che capisce ed esegue il linguaggio $\mathcal{L}$.
-$\mathcal{L}$ è il linguaggio macchina di $\mathcal{M_{L}}$, un
-programma non è altro che una sequenza di istruzioni in $\mathcal{L}$,
+\\ $\mathcal{L}$ è il linguaggio macchina di $\mathcal{M_{L}}$.
+\\ Un programma non è altro che una sequenza di istruzioni in $\mathcal{L}$,
 $\mathcal{P^{L}}$ è un programma scritto in linguaggio $\mathcal{L}$.
 
 \subsection*{Macchina astratta ad implementazione compilativa}
@@ -69,7 +69,7 @@ $\mathcal{P^{L}}$ è un programma scritto in linguaggio $\mathcal{L}$.
 La tecnica compilativa si basa sull' idea di tradurre una volta per
 tutte l'intero programma in un programma funzionalmente equivalente
 scritto nel linguaggio della macchina ospite. Il compito di eseguire
-tale traduzione e' eseguito da un programma detto \textbf{compilatore}.\\
+tale traduzione e' eseguito da un programma detto \hyperref[comp]{\textbf{compilatore}}\\
 Questa implemetazione presenta:
 \begin{itemize}
 \item \textbf{Vantaggi}: implementazione efficiente;
@@ -77,26 +77,26 @@ Questa implemetazione presenta:
 perdita di informazione sulla struttura del programma sorgente. \end{itemize}
 \end{itemize}
 
-\subsubsection*{Compilatore }
+\subsubsection*{Compilatore \textmd{\label{comp}}}
 
 Si denota con il simbolo $\mathcal{C}$ \\ Traduce il programma $\mathcal{L}_{1}$
 in un altro linguaggio $\mathcal{L}_{2}$. \\ $\mathcal{C_{LL_{O}}^{L_{A}}}$identifica
 un compilatore $\mathcal{C}$ da linguaggio $\mathcal{L_{O}}$ in
 linguaggio $\mathcal{L}$ scritto in linguaggio $\mathcal{L_{A}}$.
-\\ Un compilatore può anche trasformare una ricorsione in coda in
-modo da farla diventare una iterazione. \\ \begin{small}\textbf{
-Ricorsione:} è il processo che si verifica quando una routine richiama
+\\ Il compilatore gestisce la maggior parte delle ricorsioni;\\\textbf{
+ricorsione:} è il processo che si verifica quando una routine richiama
 se stessa, di norma su porzioni di dati di volta in volta sempre più
 piccole, se è una ricorsione incontrollata si può incorrere in un
 \textbf{stack overflow}. \\Esiste una variante chiamata \textbf{ricorsione
 in coda}, la quale consiste nel chiamare la funzione che ritorna il
-valore senza fare ulteriori computazioni. \\\textbf{ Iterazione:}
-si realizza quando si eseguono più righe di codice al verificarsi
-di una determinata condizione. Esistono due tipi di iterazione: \begin{enumerate}\item
+valore senza fare ulteriori computazioni. Essa può essere trasformata
+dal compilatore in una iterazione \\\textbf{ Iterazione:} si realizza
+quando si eseguono più righe di codice al verificarsi di una determinata
+condizione. Esistono due tipi di iterazione: \begin{enumerate}\item
 \textbf{Iterazione determinata:} il numero di volte che il ciclo è
 eseguito è \textbf{stabilito a priori} e non può essere cambiato \item
 \textbf{Iterazione indeterminata:} il ciclo viene ripetuto \textbf{fino
-a }quando una qualche espressione diventa \textbf{falsa} \end{enumerate} \end{small}
+a }quando una qualche espressione diventa \textbf{falsa} \end{enumerate}
 
 \subsection*{Macchina astratta ad implementazione interpretativa}
 
@@ -165,11 +165,11 @@ l'espressione viene valutata appena viene legata ad una variabile.
 sintattico}, cioè un albero che rappresenta la struttura sintattica
 di una stringa in accordo a determinate forme grammaticali. \footnote{Per approfondimenti sull'albero sintattico: \href{file:/Riferimenti/Linguaggi_Sintassi_e_Semantica.pdf}{Sintassi e Semantica - Alfonso Miola},
 slide 27 in poi}\\ Le espressioni sono le principali cause di \textbf{overflow }e/o
-di \textbf{underflow}, dovuti alle operazioni matematiche che come
-risultato presentano un numero non codificabile in binario nei bit
-a disposizione della macchina. \\\textbf{ Chiusura:} una coppia di
-ambiente e espressione in cui questa dev'essere valutata. L'ambiente
-deve comprendere (almeno) tutte le variabili libere dell'espressione.
+di \textbf{underflow}, esse essendo anche delle operazioni matematiche
+possono presentare come risultato un numero non codificabile in binario
+nei bit a disposizione della macchina. \\\textbf{ Chiusura:} una
+coppia di ambiente e espressione in cui questa dev'essere valutata.
+L'ambiente deve comprendere (almeno) tutte le variabili libere dell'espressione.
 
 \subsubsection*{Passaggio di parametri}
 
@@ -248,18 +248,18 @@ Un comando è un'entità sintattica la cui valutazione non restituisce
 valore ma può comunque avere effetti collaterali. \\Si dice che il
 comando \textbf{void} ritorni ``un unico valore'' invece che ``nessun
 valore''. Essendo le funzioni dei linguaggi di programmazione derivate
-da funzioni matematiche, esse non possono non avere un valore, grazie
-al fatto che non esistono funzioni matematiche con codominio vuoto,
-quindi tutte le funzioni \textbf{void} ritornano un unico valore (non
-ci è dato sapere quale).
+da funzioni matematiche, esse non possono non avere un valore (non
+esistono funzioni matematiche con codominio vuoto), quindi tutte le
+funzioni \textbf{void} ritornano un unico valore (non ci è dato sapere
+quale).
 
 \subsection*{Variabili}
 
 Il concetto di variabile che comunemente si ha, ha due ``proprietà'':
 \begin{itemize}\item sono entità \textbf{denotabili}, ovvero entità
 a cui possiamo associare un nome \item possono contenere un valore
-(locazioni di memoria) \end{itemize} Le variabili hanno diverse proprietà
-in base al tipo di linguaggio in cui si trovano: \begin{itemize}\item
+(locazioni di memoria) \end{itemize} Invece le variabili hanno diverse
+proprietà in base al tipo di linguaggio in cui si trovano: \begin{itemize}\item
 \textbf{Linguaggi iperativi }\\ Questo tipo di linguaggio presenta
 delle variabili modificabili, quindi le aree di memoria associate
 ad un nome possono contenere un valore modificabile. I linguaggi iperativi
@@ -296,9 +296,6 @@ corretto.
 ordine specifico è detto \textbf{ordinale}.
 \item Due tipi sono \textbf{compatibili} quando il tipo1 è ammesso in qualsiasi
 contesto in cui sarebbe richiesto il tipo2.
-\item Si ha \textbf{poliformismo universale parametrico} quando un valore
-ha un'infinità di tipi diversi che si ottengono da un unico schema
-di tipo generale.
 \item Si ha \textbf{inferenza di tipo} quando il tipo di dato viene rilevato
 ed automaticamente riconosciuto dal \textbf{type checker} (ML presenta
 inferenza di tipo).
@@ -329,14 +326,16 @@ a=b;
 \end{lstlisting}
  \begin{small} è possibile eguagliare due tipi diversi grazie alla
 conversione implicita \end{small}
-\item Un sistema di tipi viene detto \textbf{polimorfo} quando uno stesso
-oggetto può avere più di un tipo
-\item Un valore esibisce \textbf{polimorfismo di sottotipo }(o \textbf{limitato})
-quando ha un'infinità di sottotipi diversi, che si ottengono da uno
-schema di tipo generale, sostituendo ad un opportuno parametro i sottotipi
-di un tipo assegnato (\textbf{extends }in Java)
-\item Un sistema di tipi viene detto \textbf{monomorfo} quando ogni oggetto
-del linguaggio ha un unico tipo
+\item Un sistema di tipi viene detto:\begin{itemize}\item \textbf{polimorfo}
+quando uno stesso oggetto può avere più di un tipo \begin{itemize}\item
+\textbf{polimorfismo di sottotipo }(o \textbf{limitato}) quando ha
+un'infinità di sottotipi diversi, che si ottengono da uno schema di
+tipo generale, sostituendo ad un opportuno parametro i sottotipi di
+un tipo assegnato (\textbf{extends }in Java) \item \textbf{poliformismo
+universale parametrico} quando un valore ha un'infinità di tipi diversi
+che si ottengono da un unico schema di tipo generale. \end{itemize} \item
+\textbf{monomorfo} quando ogni oggetto del linguaggio ha un unico
+tipo \end{itemize}
 \item I tipi di dato di cui i valori non sono costituiti da altri valori
 sono detti \textbf{scalari}
 \end{itemize}
@@ -416,8 +415,8 @@ and static local variables. The size of this segment is determined
 by the size of the values in the program's source code, and does not
 change at run time.
 
-\url{https://en.wikipedia.org/wiki/Data_segment}} di un programma, il momento di allocazione può cadere o durante il
-\textbf{run-time }o il \textbf{compile-time. }
+\url{https://en.wikipedia.org/wiki/Data_segment}} di un programma, la allocazione può accadere o durante il \textbf{run-time
+}o il \textbf{compile-time. }
 
 \subsection*{Allocazione di memoria}
 
@@ -482,7 +481,7 @@ di attivazione hanno tutti una dimensione diversa, bisogna tenere
 traccia di dove inizia lo \textbf{stack frame precedente}, in modo
 da poterlo ripristinare in seguito.\end{small} \item il puntatore
 di catena statica (se viene implementato scope statico) \item l'indirizzo
-di ritorno \item l'indirizzo del risultato \item e i parametri \item
+di ritorno \item l'indirizzo del risultato \item i parametri \item
 nel caso di un metodo anche un riferimento all'oggetto su cui il metodo
 viene chiamato \end{itemize} Invece nel caso di \textbf{stack frame
 con blocchi anonimi} vengono memorizzati:
@@ -636,19 +635,19 @@ del ADT che il paradigma orientato agli oggetti risolve:} \begin{itemize}\item
 c'è bisogno di andare a ridefinire tutte le operazioni già esistenti
 sui tipi di dati derivati \item possibilità di avere array con tipi
 di dato diversi ma compatibili \end{itemize} 
-\begin{thebibliography}{1}
-\bibitem{key-1}Appunti basati sul lavoro di Slavetto: \url{https://slavetto.github.io/primo-anno/}
+\begin{thebibliography}{A}
+\bibitem[A]{key-1}Appunti basati sul lavoro di Slavetto: \url{https://slavetto.github.io/primo-anno/}
 codice git: \url{https://github.com/slavetto/slavetto.github.io}
 
-\bibitem{key-2} Integrazione con le slide di Luca Albeni: \href{file:/Riferimenti/SL_Slide_Luca_Albeni.zip}{SL\_Slide\_Luca\_Albeni.zip}
+\bibitem[B]{key-2} Integrazione con le slide di Luca Albeni: \href{file:/Riferimenti/SL_Slide_Luca_Albeni.zip}{SL\_Slide\_Luca\_Albeni.zip}
 
-\bibitem{key-3} Corso di programmazione in C di Claudio Fornaro:
+\bibitem[C]{key-3} Corso di programmazione in C di Claudio Fornaro:
 \href{file:/Riferimenti/18-DynAlloc.pdf}{/Riferimenti/18-DynAlloc.pdf}
 
-\bibitem{key-4} Linguaggi Sentassi e Semantica di Alfonso Miola:
+\bibitem[D]{key-4} Linguaggi Sentassi e Semantica di Alfonso Miola:
 \href{file:/Riferimenti/Linguaggi_Sintassi_e_Semantica.pdf}{/Riferimenti/Linguaggi\_Sintassi\_e\_Semantica.pdf}
 
-\bibitem{key-5} Integrazione con: \url{http://www.dmi.unict.it/~barba/Architetture.html/MATERIALE-IN-RETE/MA/implementazione.htm}
+\bibitem[E]{key-5} Integrazione con: \url{http://www.dmi.unict.it/~barba/Architetture.html/MATERIALE-IN-RETE/MA/implementazione.htm}
 \end{thebibliography}
 
 \end{document}

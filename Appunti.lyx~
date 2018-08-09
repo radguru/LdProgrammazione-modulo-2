@@ -235,6 +235,21 @@ status open
 
 .
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Formula $\mathcal{L}$
 \end_inset
 
@@ -242,7 +257,23 @@ status open
 \begin_inset Formula $\mathcal{M_{L}}$
 \end_inset
 
-, un programma non è altro che una sequenza di istruzioni in 
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+ Un programma non è altro che una sequenza di istruzioni in 
 \begin_inset Formula $\mathcal{L}$
 \end_inset
 
@@ -267,10 +298,21 @@ La tecnica compilativa si basa sull' idea di tradurre una volta per tutte
  linguaggio della macchina ospite.
  Il compito di eseguire tale traduzione e' eseguito da un programma detto
  
-\series bold
-compilatore
-\series default
-.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[comp]{
+\backslash
+textbf{compilatore}}
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status open
 
@@ -348,6 +390,21 @@ end{itemize}
 
 \begin_layout Subsubsection*
 Compilatore 
+\series medium
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{comp}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -430,9 +487,7 @@ status open
 
 \end_inset
 
- Un compilatore può anche trasformare una ricorsione in coda in modo da
- farla diventare una iterazione.
- 
+ Il compilatore gestisce la maggior parte delle ricorsioni;
 \begin_inset ERT
 status open
 
@@ -442,16 +497,14 @@ status open
 \backslash
 
 \backslash
- 
-\backslash
-begin{small}
+
 \end_layout
 
 \end_inset
 
 
 \series bold
- Ricorsione:
+ ricorsione:
 \series default
  è il processo che si verifica quando una routine richiama se stessa, di
  norma su porzioni di dati di volta in volta sempre più piccole, se è una
@@ -481,7 +534,7 @@ ricorsione in coda
 \series default
 , la quale consiste nel chiamare la funzione che ritorna il valore senza
  fare ulteriori computazioni.
- 
+ Essa può essere trasformata dal compilatore in una iterazione 
 \begin_inset ERT
 status open
 
@@ -558,9 +611,7 @@ status open
 
 
 \backslash
-end{enumerate} 
-\backslash
-end{small}
+end{enumerate}
 \end_layout
 
 \end_inset
@@ -1128,8 +1179,9 @@ e/o di
 \series bold
 underflow
 \series default
-, dovuti alle operazioni matematiche che come risultato presentano un numero
- non codificabile in binario nei bit a disposizione della macchina.
+, esse essendo anche delle operazioni matematiche possono presentare come
+ risultato un numero non codificabile in binario nei bit a disposizione
+ della macchina.
  
 \begin_inset ERT
 status open
@@ -1797,9 +1849,8 @@ nessun valore
 
 .
  Essendo le funzioni dei linguaggi di programmazione derivate da funzioni
- matematiche, esse non possono non avere un valore, grazie al fatto che
- non esistono funzioni matematiche con codominio vuoto, quindi tutte le
- funzioni 
+ matematiche, esse non possono non avere un valore (non esistono funzioni
+ matematiche con codominio vuoto), quindi tutte le funzioni 
 \series bold
 void
 \series default
@@ -1864,8 +1915,8 @@ end{itemize}
 
 \end_inset
 
- Le variabili hanno diverse proprietà in base al tipo di linguaggio in cui
- si trovano: 
+ Invece le variabili hanno diverse proprietà in base al tipo di linguaggio
+ in cui si trovano: 
 \begin_inset ERT
 status open
 
@@ -2181,15 +2232,6 @@ compatibili
 \begin_layout Itemize
 Si ha 
 \series bold
-poliformismo universale parametrico
-\series default
- quando un valore ha un'infinità di tipi diversi che si ottengono da un
- unico schema di tipo generale.
-\end_layout
-
-\begin_layout Itemize
-Si ha 
-\series bold
 inferenza di tipo
 \series default
  quando il tipo di dato viene rilevato ed automaticamente riconosciuto dal
@@ -2396,15 +2438,41 @@ end{small}
 \end_layout
 
 \begin_layout Itemize
-Un sistema di tipi viene detto 
+Un sistema di tipi viene detto:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
 \series bold
 polimorfo
 \series default
- quando uno stesso oggetto può avere più di un tipo
+ quando uno stesso oggetto può avere più di un tipo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\backslash
+item
 \end_layout
 
-\begin_layout Itemize
-Un valore esibisce 
+\end_inset
+
+ 
 \series bold
 polimorfismo di sottotipo 
 \series default
@@ -2418,15 +2486,58 @@ limitato
 \series bold
 extends 
 \series default
-in Java)
+in Java) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item
 \end_layout
 
-\begin_layout Itemize
-Un sistema di tipi viene detto 
+\end_inset
+
+ 
+\series bold
+poliformismo universale parametrico
+\series default
+ quando un valore ha un'infinità di tipi diversi che si ottengono da un
+ unico schema di tipo generale.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize} 
+\backslash
+item
+\end_layout
+
+\end_inset
+
+ 
 \series bold
 monomorfo
 \series default
- quando ogni oggetto del linguaggio ha un unico tipo
+ quando ogni oggetto del linguaggio ha un unico tipo 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -3019,7 +3130,7 @@ https://en.wikipedia.org/wiki/Data_segment
 
 
 \series default
- di un programma, il momento di allocazione può cadere o durante il 
+ di un programma, la allocazione può accadere o durante il 
 \series bold
 run-time 
 \series default
@@ -3357,7 +3468,7 @@ item
 
 \end_inset
 
- e i parametri 
+ i parametri 
 \begin_inset ERT
 status open
 
@@ -4099,7 +4210,12 @@ mark and sweep
 sweep
 \series default
  gli oggetti in memoria vengono riallocati in maniera che siano tutti contigui,
- in questo modo viene superato il problema delle posizioni riciclate
+ in questo modo viene superato il problema delle posizioni riciclate del
+ 
+\series bold
+mark and sweep
+\series default
+
 \begin_inset ERT
 status open
 
