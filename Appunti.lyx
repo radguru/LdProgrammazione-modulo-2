@@ -509,9 +509,20 @@ status open
  è il processo che si verifica quando una routine richiama se stessa, di
  norma su porzioni di dati di volta in volta sempre più piccole, se è una
  ricorsione incontrollata si può incorrere in un 
-\series bold
-stack overflow
-\series default
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[overflow]{
+\backslash
+textbf{stack overflow}}
+\end_layout
+
+\end_inset
+
 .
  
 \begin_inset ERT
@@ -1173,7 +1184,24 @@ status open
 
  Le espressioni sono le principali cause di 
 \series bold
-overflow 
+overflow
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+label{overflow}
+\end_layout
+
+\end_inset
+
+
+\series bold
+ 
 \series default
 e/o di 
 \series bold

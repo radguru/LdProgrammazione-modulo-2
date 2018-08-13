@@ -87,16 +87,17 @@ linguaggio $\mathcal{L}$ scritto in linguaggio $\mathcal{L_{A}}$.
 ricorsione:} è il processo che si verifica quando una routine richiama
 se stessa, di norma su porzioni di dati di volta in volta sempre più
 piccole, se è una ricorsione incontrollata si può incorrere in un
-\textbf{stack overflow}. \\Esiste una variante chiamata \textbf{ricorsione
-in coda}, la quale consiste nel chiamare la funzione che ritorna il
-valore senza fare ulteriori computazioni. Essa può essere trasformata
-dal compilatore in una iterazione \\\textbf{ Iterazione:} si realizza
-quando si eseguono più righe di codice al verificarsi di una determinata
-condizione. Esistono due tipi di iterazione: \begin{enumerate}\item
-\textbf{Iterazione determinata:} il numero di volte che il ciclo è
-eseguito è \textbf{stabilito a priori} e non può essere cambiato \item
-\textbf{Iterazione indeterminata:} il ciclo viene ripetuto \textbf{fino
-a }quando una qualche espressione diventa \textbf{falsa} \end{enumerate}
+\hyperref[overflow]{\textbf{stack overflow}}. \\Esiste una variante
+chiamata \textbf{ricorsione in coda}, la quale consiste nel chiamare
+la funzione che ritorna il valore senza fare ulteriori computazioni.
+Essa può essere trasformata dal compilatore in una iterazione \\\textbf{
+Iterazione:} si realizza quando si eseguono più righe di codice al
+verificarsi di una determinata condizione. Esistono due tipi di iterazione:
+\begin{enumerate}\item \textbf{Iterazione determinata:} il numero
+di volte che il ciclo è eseguito è \textbf{stabilito a priori} e non
+può essere cambiato \item \textbf{Iterazione indeterminata:} il ciclo
+viene ripetuto \textbf{fino a }quando una qualche espressione diventa
+\textbf{falsa} \end{enumerate}
 
 \subsection*{Macchina astratta ad implementazione interpretativa}
 
@@ -164,8 +165,8 @@ l'espressione viene valutata appena viene legata ad una variabile.
 \end{enumerate} Di una espressione si può creare un \textbf{albero
 sintattico}, cioè un albero che rappresenta la struttura sintattica
 di una stringa in accordo a determinate forme grammaticali. \footnote{Per approfondimenti sull'albero sintattico: \href{file:/Riferimenti/Linguaggi_Sintassi_e_Semantica.pdf}{Sintassi e Semantica - Alfonso Miola},
-slide 27 in poi}\\ Le espressioni sono le principali cause di \textbf{overflow }e/o
-di \textbf{underflow}, esse essendo anche delle operazioni matematiche
+slide 27 in poi}\\ Le espressioni sono le principali cause di \textbf{overflow}\label{overflow}\textbf{
+}e/o di \textbf{underflow}, esse essendo anche delle operazioni matematiche
 possono presentare come risultato un numero non codificabile in binario
 nei bit a disposizione della macchina. \\\textbf{ Chiusura:} una
 coppia di ambiente e espressione in cui questa dev'essere valutata.
